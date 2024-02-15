@@ -1,9 +1,9 @@
 package org.avengers.common
 
 def call(String javaVersion) {
-    stage('Clone') {
+    stage('Install Java') {
         script {
-            git branch: "${branch}", credentialsId: "${creds}", url: "${url}"
+            sh "sudo apt update && sudo apt install -y openjdk-${javaVersion}-jdk"
         }
     }
 }
