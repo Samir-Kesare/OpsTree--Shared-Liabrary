@@ -1,6 +1,4 @@
 def call() {
-    stage('Publish HTML Report') {
-        steps {
             publishHTML(target: [
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
@@ -9,6 +7,4 @@ def call() {
                 reportFiles: 'spotbugs.html',
                 reportName: 'SpotBugs Report'
             ])
-        }
-    }
 }
