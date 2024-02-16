@@ -8,7 +8,7 @@ def call(Map config = [:]){
     def gitCheckout = new gitCheckout()
     def javaCompile = new compile()
     def cleanWorkspace = new cleanWorkspace()
-    def staticCodeAnalysis new staticCodeAnalysis()
+    def staticCodeAnalysis = new staticCodeAnalysis()
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
     javaCompile.call()
