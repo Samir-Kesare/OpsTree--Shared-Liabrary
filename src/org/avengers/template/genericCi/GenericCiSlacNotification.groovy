@@ -2,7 +2,7 @@ package org.avengers.template.genericCi
 
 import org.avengers.genericCi.slackNotification.*
 
-def call(String url, String creds, String branch){
+def call(){
   dslJob = new DslJob()
   sendNotification = new SendNotification()
 
