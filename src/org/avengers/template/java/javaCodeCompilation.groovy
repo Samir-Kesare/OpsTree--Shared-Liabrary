@@ -12,8 +12,8 @@ def call(Map config = [:]){
     gitCheckout.call(branch: config.branch, url: config.url  )
     javaCompile.call()   
     }
-    gitCheckout.call(branch: config.branch, url: config.url  )
-    javaCompile.call()
+    // gitCheckout.call(branch: config.branch, url: config.url  )
+    // javaCompile.call()
     catch (e) {
         echo 'Analysis Failed'
         cleanWorkspace.call()
