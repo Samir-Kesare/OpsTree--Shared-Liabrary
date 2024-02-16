@@ -1,4 +1,4 @@
-package org.avengers.genericCi.slackNotification.
+package org.avengers.genericCi.slackNotification
 
 def call() {
     stage('Send Slack Notification') {
