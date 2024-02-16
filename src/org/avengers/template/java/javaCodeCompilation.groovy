@@ -7,7 +7,7 @@ import org.avengers.java.compile.*
 def call(Map config = [:]){
     def gitCheckout = new gitCheckout()
     def javaCompile = new compile()
-    // def cleanWorkspace = new cleanWorkspace()
+    def cleanWorkspace = new cleanWorkspace()
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
     javaCompile.call()   
