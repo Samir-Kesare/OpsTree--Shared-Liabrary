@@ -1,6 +1,6 @@
 package org.avengers.genericCI
 
-def call(status) {
+def call() {
     stage('Send Slack Notification') {
         script {
             if (status == 'SUCCESS') {
