@@ -1,4 +1,4 @@
-package org.avengers.template
+package org.avengers.template.python
 
 import org.avengers.common.*
 import org.avengers.python.dependencyScanning.*
