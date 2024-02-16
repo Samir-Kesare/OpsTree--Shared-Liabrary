@@ -15,7 +15,7 @@ def call(Map config = [:]){
     gitCheckout.call(branch: config.branch, url: config.url  )
     javaCompile.call()
     catch (e) {
-        echo 'Compilation Failed'
+        echo 'Analysis Failed'
         cleanWorkspace.call()
         // Since we're catching the exception in order to report on it,
         // we need to re-throw it, to ensure that the build is marked as failed
