@@ -15,5 +15,5 @@ def call(Map config = [:]){
     javaCompile.call()
     staticCodeAnalysis.call()
     cleanWorkspace.call()
-  }
+  
 }
