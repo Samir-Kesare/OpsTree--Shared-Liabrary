@@ -2,13 +2,11 @@ package org.avengers.genericCi.slackNotification
 
 def call() {
     post {
-        success { 
-            slackNotification("SUCCESS")
-            echo 'Compiled Successfully !'
+        success {
+            slackSend channel: 'jenkinss', message: 'Job Build successfully'
         }
-        failure { 
-            slackNotification("FAILURE")
-            echo 'Compilation Failed !'
+        failure {
+            slackSend channel: 'jenkinss', message: 'Job Failed '
         }
     }
 }
