@@ -2,5 +2,7 @@
 package org.avengers.common
 
 def call() {
-  cleanWs cleanWhenSuccess: false
+  stage('Clean Workspace'){
+      cleanWs cleanWhenSuccess: false
+  }
 }
