@@ -8,7 +8,7 @@ import org.avengers.java.dependencyCheck.dpCheck
 def call(Map config = [:]){
     def gitCheckout = new GitCheckoutPrivate()
     def dpCheck = new dpCheck()
-    def cleanW = new cleanWorkspace()
+    // def cleanW = new cleanWorkspace()
   
     try {
         // Clone repository 
