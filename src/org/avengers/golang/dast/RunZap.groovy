@@ -1,5 +1,5 @@
 package org.avengers.golang.dast
-def call() {
+def call(String zapVersion) {
 stage('Run ZAP Scan') {
             steps {
                  // Start ZAP and perform the scan
