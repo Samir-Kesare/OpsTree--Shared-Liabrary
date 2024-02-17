@@ -1,8 +1,8 @@
 package org.avengers.template.java
 
-import org.avengers.common.GitCheckoutPrivate
+import org.avengers.common.*
 // import org.avengers.common.cleanWorkspace
-import org.avengers.java.dependencyCheck.dpCheck
+import org.avengers.java.dependencyCheck.*
 // import org.avengers.common.packageArtifacts
 
 def call(Map config = [:]){
