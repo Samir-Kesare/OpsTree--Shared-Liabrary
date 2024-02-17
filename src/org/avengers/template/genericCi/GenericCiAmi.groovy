@@ -1,5 +1,6 @@
 package org.avengers.template.genericCi
 
+import org.avengers.common.*
 import org.avengers.genericCi.packerAmi.*
 
 def call(String url, String creds, String branch){
