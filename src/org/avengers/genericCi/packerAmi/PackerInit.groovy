@@ -6,3 +6,4 @@ def call() {
                         // Initialize Packer (if necessary)
                         sh '/usr/bin/packer init .'
     }
+}
