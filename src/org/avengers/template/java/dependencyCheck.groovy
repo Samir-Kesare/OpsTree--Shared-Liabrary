@@ -12,7 +12,7 @@ def call(Map config = [:]){
   
     try {
         // Clone repository 
-        gitCheckout.call(branch: branch, url: url, credentialsId: creds)
+        gitCheckout.call(config.url, config.creds, config.branch)
       
         // Package artifacts
         // packageArtifacts.call()
