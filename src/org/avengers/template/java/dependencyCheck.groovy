@@ -1,7 +1,7 @@
 package org.avengers.template.java
 
 import org.avengers.common.GitCheckoutPrivate
-import org.avengers.common.cleanWorkspace
+// import org.avengers.common.cleanWorkspace
 import org.avengers.java.dependencyCheck.dpCheck
 // import org.avengers.common.packageArtifacts
 
@@ -24,7 +24,7 @@ def call(Map config = [:]){
         echo 'DP check Failed !'
 
         // clean workspace 
-        cleanW.call()
+        // cleanW.call()
   
         throw e
     } finally {
