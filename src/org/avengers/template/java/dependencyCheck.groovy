@@ -7,7 +7,7 @@ import org.avengers.common.packageArtifacts
 
 def call(Map config = [:]){
     def gitCheckout = new GitCheckoutPrivate()
-    def dpCheck = new dependencyCheck()
+    def dpCheck = new dpCheck()
     def cleanW = new cleanWorkspace()
   
     try {
