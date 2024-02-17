@@ -14,9 +14,11 @@ def call(String url, String creds, String branch){
     try {
         // Clone repository 
         gitCheckout.call(url, creds, branch)
-      
+
+        println("Before calling packageArtifacts function")
         // Package artifacts
         packageArtifacts()
+        println("After calling packageArtifacts function")
       
         // perform Dependency Scanning 
         // dpCheck.call()
