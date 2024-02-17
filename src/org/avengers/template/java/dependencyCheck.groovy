@@ -2,7 +2,7 @@ package org.avengers.template.java
 
 import org.avengers.common.packageArtifacts
 import org.avengers.common.GitCheckoutPrivate
-// import org.avengers.common.cleanWorkspace
+import org.avengers.common.cleanWorkspace
 import org.avengers.java.dependencyCheck.dpCheck
 
 
@@ -28,7 +28,7 @@ def call(String url, String creds, String branch){
         echo 'DP check Failed !'
 
         // clean workspace 
-        // cleanW.call()
+        cleanW.call()
   
         throw e
     } finally {
