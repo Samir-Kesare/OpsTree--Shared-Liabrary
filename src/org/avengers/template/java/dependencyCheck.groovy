@@ -3,13 +3,13 @@ package org.avengers.template.java
 import org.avengers.common.*
 import org.avengers.common.GitCheckoutPrivate
 // import org.avengers.common.cleanWorkspace
-// import org.avengers.java.dependencyCheck.dpCheck
+import org.avengers.java.dependencyCheck.dpCheck
 
 
 def call(String url, String creds, String branch){
     def gitCheckout = new GitCheckoutPrivate()
     def packageArtifacts = new packageArtifacts()
-    // def dpCheck = new dpCheck()
+    def dpCheck = new dpCheck()
     // def cleanW = new cleanWorkspace()
   
     try {
@@ -22,7 +22,7 @@ def call(String url, String creds, String branch){
         println("After calling packageArtifacts function")
       
         // perform Dependency Scanning 
-        // dpCheck.call()
+        dpCheck.call()
       
     } catch (e) {
         echo 'DP check Failed !'
