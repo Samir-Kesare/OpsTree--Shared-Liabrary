@@ -1,7 +1,9 @@
 package org.avengers.genericCi.packerAmi
 
 def call() {
-    dir('/home/shreya/') {
-        sh '/usr/bin/packer init .'
+    stage('Initialize Packer') {
+            sh '/usr/bin/packer init .'
+        }
     }
-}
+
+
