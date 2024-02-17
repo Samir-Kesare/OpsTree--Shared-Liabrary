@@ -36,7 +36,7 @@ def call(String url, String creds, String branch){
         echo "Current build result: ${currentBuild.currentResult}"
         
         def currentResult = currentBuild.result ?: 'SUCCESS'
-        if (currentBuild.result == 'SUCCESS') {
+        if (currentBuild.currentResult == 'SUCCESS') {
             echo 'DP check Successful!'
 
             // archive HTML reports as artifacts
