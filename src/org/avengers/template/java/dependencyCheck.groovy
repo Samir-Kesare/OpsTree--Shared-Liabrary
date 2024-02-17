@@ -1,3 +1,5 @@
+package org.avengers.template
+
 import org.avengers.common.GitCheckoutPrivate
 import org.avengers.common.cleanWorkspace
 import org.avengers.java.dependencyCheck.dpCheck
