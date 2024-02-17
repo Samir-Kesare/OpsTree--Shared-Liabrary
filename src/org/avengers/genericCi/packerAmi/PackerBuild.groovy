@@ -1,7 +1,7 @@
 package org.avengers.genericCi.packerAmi
 
 def call() {
-    dir('/home/shreya/') {
+    stage('Build AMI') {
         withCredentials([[
             $class: 'AmazonWebServicesCredentialsBinding',
             credentialsId: 'aws creds',
@@ -12,4 +12,5 @@ def call() {
         }
     }
 }
+
 
