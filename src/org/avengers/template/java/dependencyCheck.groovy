@@ -2,14 +2,14 @@ package org.avengers.template.java
 
 import org.avengers.common.packageArtifacts
 import org.avengers.common.GitCheckoutPrivate
-import org.avengers.common.cleanWorkspace
-import org.avengers.java.dependencyCheck.dpCheck
+// import org.avengers.common.cleanWorkspace
+// import org.avengers.java.dependencyCheck.dpCheck
 
 
 def call(String url, String creds, String branch){
     def gitCheckout = new GitCheckoutPrivate()
-    def dpCheck = new dpCheck()
-    def cleanW = new cleanWorkspace()
+    // def dpCheck = new dpCheck()
+    // def cleanW = new cleanWorkspace()
   
     try {
         // Clone repository 
@@ -19,13 +19,13 @@ def call(String url, String creds, String branch){
         packageArtifacts.call()
       
         // perform Dependency Scanning 
-        dpCheck.call()
+        // dpCheck.call()
       
     } catch (e) {
         echo 'DP check Failed !'
 
         // clean workspace 
-        cleanW.call()
+        // cleanW.call()
   
         throw e
     } finally {
