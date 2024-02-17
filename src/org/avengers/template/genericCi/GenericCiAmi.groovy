@@ -1,13 +1,13 @@
 package org.avengers.template.genericCi
 
-import org.avengers.genericCi.packerAmi.*
+import org.avengers.genericCi.packerAmi.AwsCreds // Import the AwsCreds class
 
 def call(){
-  awsCred = new AwsCreds()
-  packerInit = new PackerInit()
-  packerBuild = new PackerBuild()
+  def awsCred = new AwsCreds() // Use 'def' to declare the variable
+  def packerInit = new PackerInit()
+  def packerBuild = new PackerBuild()
 
-  awsCreds.call()
+  awsCred.call() 
   packerInit.call()
   packerBuild.call()
 }
