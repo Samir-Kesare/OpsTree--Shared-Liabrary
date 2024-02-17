@@ -10,7 +10,7 @@ def call(String url, String creds, String branch){
     def gitCheckout = new GitCheckoutPrivate()
     def packageArtifacts = new packageArtifacts()
     def dpCheck = new dpCheck()
-    // def cleanW = new cleanWorkspace()
+    def cleanW = new cleanWorkspace()
   
     try {
         // Clone repository 
