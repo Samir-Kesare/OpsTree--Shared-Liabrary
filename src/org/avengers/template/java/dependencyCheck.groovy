@@ -16,7 +16,7 @@ def call(String url, String creds, String branch){
         gitCheckout.call(url, creds, branch)
       
         // Package artifacts
-        packageArtifacts.call()
+        packageArtifacts()
       
         // perform Dependency Scanning 
         // dpCheck.call()
