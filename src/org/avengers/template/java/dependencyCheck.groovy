@@ -1,6 +1,6 @@
 package org.avengers.template.java
 
-import org.avengers.common.packageArtifacts
+import org.avengers.common.*
 import org.avengers.common.GitCheckoutPrivate
 // import org.avengers.common.cleanWorkspace
 // import org.avengers.java.dependencyCheck.dpCheck
