@@ -1,7 +1,7 @@
 import org.avengers.common.GitCheckoutPrivate
 import org.avengers.common.cleanWorkspace
-import org.avengers.java.dependencyCheck.*
-import org.avengers.java.packageArtifacts.*
+import org.avengers.java.dependencyCheck
+import org.avengers.java.packageArtifacts
 
 def call(Map config = [:]){
     def gitCheckout = new GitCheckoutPrivate()
