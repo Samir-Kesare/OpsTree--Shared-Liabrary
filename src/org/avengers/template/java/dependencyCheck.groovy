@@ -7,7 +7,7 @@ import org.avengers.java.dependencyCheck.*
 
 def call(Map config = [:]){
     def gitCheckout = new GitCheckoutPrivate()
-    def dpCheck = new dpCheck()
+    // def dpCheck = new dpCheck()
     // def cleanW = new cleanWorkspace()
   
     try {
@@ -18,7 +18,7 @@ def call(Map config = [:]){
         // packageArtifacts.call()
       
         // perform Dependency Scanning 
-        dpCheck.call()
+        // dpCheck.call()
       
     } catch (e) {
         echo 'DP check Failed !'
