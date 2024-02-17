@@ -3,7 +3,7 @@ package org.avengers.template.java
 import org.avengers.common.GitCheckoutPrivate
 import org.avengers.common.cleanWorkspace
 import org.avengers.java.dependencyCheck.dpCheck
-import org.avengers.common.packageArtifacts
+// import org.avengers.common.packageArtifacts
 
 def call(Map config = [:]){
     def gitCheckout = new GitCheckoutPrivate()
@@ -15,7 +15,7 @@ def call(Map config = [:]){
         gitCheckout.call(branch: config.branch, url: config.url, credentialsId: config.credentialsId)
       
         // Package artifacts
-        packageArtifacts.call()
+        // packageArtifacts.call()
       
         // perform Dependency Scanning 
         dpCheck.call()
