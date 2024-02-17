@@ -8,7 +8,7 @@ import org.avengers.common.GitCheckoutPrivate
 
 def call(String url, String creds, String branch){
     def gitCheckout = new GitCheckoutPrivate()
-    def packageArtifactsInstance = new PackageArtifacts()
+    def packageArtifacts = new packageArtifacts()
     // def dpCheck = new dpCheck()
     // def cleanW = new cleanWorkspace()
   
