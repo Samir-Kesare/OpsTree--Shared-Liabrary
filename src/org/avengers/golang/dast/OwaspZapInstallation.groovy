@@ -1,5 +1,5 @@
 package org.avengers.golang.dast
-def call() {
+def call(String zapVersion) {
   stage('Install ZAP') {
     script {
          // Download and install OWASP ZAP
