@@ -5,7 +5,7 @@ import org.avengers.common.*
 import org.avengers.java.dependencyCheck.*
 // import org.avengers.common.packageArtifacts
 
-def call(Map config = [:]){
+def call(String url, String creds, String branch){
     def gitCheckout = new GitCheckoutPrivate()
     // def dpCheck = new dpCheck()
     // def cleanW = new cleanWorkspace()
