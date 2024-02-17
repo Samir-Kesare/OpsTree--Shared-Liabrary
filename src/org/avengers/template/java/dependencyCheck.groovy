@@ -1,4 +1,4 @@
-package org.avengers.template
+package org.avengers.template.java
 
 import org.avengers.common.GitCheckoutPrivate
 import org.avengers.common.cleanWorkspace
