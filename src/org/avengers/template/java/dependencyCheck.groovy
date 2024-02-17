@@ -8,6 +8,7 @@ import org.avengers.common.GitCheckoutPrivate
 
 def call(String url, String creds, String branch){
     def gitCheckout = new GitCheckoutPrivate()
+    def packageArtifactsInstance = new PackageArtifacts()
     // def dpCheck = new dpCheck()
     // def cleanW = new cleanWorkspace()
   
@@ -17,7 +18,7 @@ def call(String url, String creds, String branch){
 
         println("Before calling packageArtifacts function")
         // Package artifacts
-        packageArtifacts()
+        packageArtifacts.call()
         println("After calling packageArtifacts function")
       
         // perform Dependency Scanning 
