@@ -7,7 +7,7 @@ def call(){
   packerInit = new PackerInit()
   packerBuild = new PackerBuild()
 
-  awsCreds .call()
-  packerInit .call()
+  awsCreds.call()
+  packerInit.call()
   packerBuild.call()
 }
