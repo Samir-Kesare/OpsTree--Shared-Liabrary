@@ -3,7 +3,7 @@ package org.avengers.template
 import org.avengers.common.GitCheckoutPrivate
 import org.avengers.common.cleanWorkspace
 import org.avengers.java.dependencyCheck.dpCheck
-import org.avengers.java.common.packageArtifacts
+import org.avengers.common.packageArtifacts
 
 def call(Map config = [:]){
     def gitCheckout = new GitCheckoutPrivate()
