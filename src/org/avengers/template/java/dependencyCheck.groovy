@@ -16,11 +16,9 @@ def call(String url, String creds, String branch){
         // Clone repository 
         gitCheckout.call(url, creds, branch)
 
-        println("Before calling packageArtifacts function")
         // Package artifacts
         packageArtifacts.call()
-        println("After calling packageArtifacts function")
-      
+        
         // perform Dependency Scanning 
         dpCheck.call()
       
@@ -32,10 +30,9 @@ def call(String url, String creds, String branch){
   
         throw e
     } finally {
-        echo "In finally block"
-        echo "Current build result: ${currentBuild.currentResult}"
+     //   echo "In finally block"
+      //  echo "Current build result: ${currentBuild.currentResult}"
         
-        def currentResult = currentBuild.result ?: 'SUCCESS'
         if (currentBuild.currentResult == 'SUCCESS') {
             echo 'DP check Successful!'
 
