@@ -9,6 +9,6 @@ def call(String url, String creds, String branch, String zapVersion){
   runZap = new RunZap()
 
   gitCheckoutPrivate.call(url, creds, branch)
-  OwaspZapInstallation.call(zapVersion)
-  RunZap.call(zapVersion)
+  owaspZapInstallation.call(zapVersion)
+  runZap.call(zapVersion)
 }
