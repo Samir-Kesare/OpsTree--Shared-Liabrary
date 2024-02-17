@@ -1,5 +1,3 @@
-// AwsCreds.groovy
-
 package org.avengers.genericCi.packerAmi
 
 class AwsCreds {
