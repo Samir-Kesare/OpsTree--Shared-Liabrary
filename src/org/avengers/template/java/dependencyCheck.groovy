@@ -32,6 +32,7 @@ def call(String url, String creds, String branch){
   
         throw e
     } finally {
+        echo "In finally block"
         if (currentBuild.result == 'SUCCESS') {
             echo 'DP check Successful!'
 
