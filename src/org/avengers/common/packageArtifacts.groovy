@@ -2,11 +2,9 @@ package org.avengers.common
 
 def call() {
     stage('Build') {
-        steps {
-            script {
+        script {
                 // Package artifacts minus the testing
-                sh 'mvn clean package -DskipTests=true'
-            }
+            sh 'mvn clean package -DskipTests=true'
         }
     }
 }
