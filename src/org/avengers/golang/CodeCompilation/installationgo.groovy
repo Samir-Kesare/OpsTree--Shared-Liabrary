@@ -4,7 +4,7 @@ def call() {
     stage('Installation Pre-Requisites') {
         script {
             // Update apt packages
-            sh 'sudo -A apt update'
+            sudo -S apt update
             // Install Go using snap
             sh 'sudo snap install go --classic'
           
