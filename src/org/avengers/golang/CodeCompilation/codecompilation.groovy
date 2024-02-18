@@ -1,4 +1,4 @@
-package org.org.avengers.golang.CodeCompilation
+package org.avengers.golang.CodeCompilation
 
 def call() {
   echo "Golang code compilation"
