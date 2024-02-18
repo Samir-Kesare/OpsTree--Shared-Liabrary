@@ -15,7 +15,12 @@ def call(String url, String creds, String branch){
   virtual.call()
   dep.call()
   code.call()
-  arch.call()
+   try {
+        arch.call()
+      
+    } catch (e) {
+        echo 'report generate Failed !'
+  
   
 }
  
