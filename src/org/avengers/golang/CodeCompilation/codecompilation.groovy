@@ -1,4 +1,5 @@
-package org.mygurukulam.Golang
+package org.org.avengers.golang.CodeCompilation
+
 def call() {
   echo "Golang code compilation"
    sh 'go install'
