@@ -1,4 +1,0 @@
-package org.avengers.python.BugsAnalysis
-def call() {
-
-
