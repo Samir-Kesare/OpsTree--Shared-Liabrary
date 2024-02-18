@@ -1,4 +1,4 @@
-package org.avengers.java.staticCodeAnalysis
+package org.avengers.python.staticCodeAnalysis
 
 def call() {
 stage('Install dependencies') {
