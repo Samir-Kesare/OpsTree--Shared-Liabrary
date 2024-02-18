@@ -1,7 +1,9 @@
 package org.avengers.template.golang
 
+
 import org.avengers.common.*
 import org.avengers.golang.CodeCompilation.*
+import org.avengers.golang.bugAnalysis.*
 
 def call(String url, String creds, String branch){
   gitCheckoutPrivate = new GitCheckoutPrivate()
