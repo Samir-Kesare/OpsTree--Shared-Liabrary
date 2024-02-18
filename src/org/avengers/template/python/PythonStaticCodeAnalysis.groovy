@@ -3,24 +3,21 @@ package org.avengers.template.python
 import org.avengers.common.*
 import org.avengers.python.staticCodeAnalysis.*
 
-def call(String url, String creds, String branch){
+def call(String url, String creds, String branch) {
   
-  gitCheckoutPrivate = new GitCheckoutPrivate()
-  virtual = new virtualEnv()
-  dep = new dependencies()
-  code = new staticCodeAnalysis()
-  arch = new ArchiveArtifacts() 
+    GitCheckoutPrivate gitCheckoutPrivate = new GitCheckoutPrivate()
+    VirtualEnv virtual = new VirtualEnv()
+    Dependencies dep = new Dependencies()
+    StaticCodeAnalysis code = new StaticCodeAnalysis()
+    ArchiveArtifacts arch = new ArchiveArtifacts() 
   
-  gitCheckoutPrivate.call(url, creds, branch)
-  virtual.call()
-  dep.call()
-  code.call()
-   try {
+    gitCheckoutPrivate.call(url, creds, branch)
+    virtual.call()
+    dep.call()
+    code.call()
+    try {
         arch.call()
-      
-    } catch (e) {
-        echo 'report generate Failed !'
-  
-  
+    } catch (Exception e) {
+        echo 'Report generation failed!'
+    }
 }
- 
