@@ -1,4 +1,4 @@
-package org.avengers.common
+package org.avengers.python.staticCodeAnalysis
 
 def call() {
     post {
