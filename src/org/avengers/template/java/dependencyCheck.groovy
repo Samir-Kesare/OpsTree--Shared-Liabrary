@@ -1,24 +1,18 @@
 package org.avengers.template.java
 
-import org.avengers.common.packageArtifacts
-import org.avengers.common.GitCheckoutPrivate
-import org.avengers.common.cleanWorkspace
+import org.avengers.common.*
 import org.avengers.java.dependencyCheck.dpCheck
 
 
 def call(String url, String creds, String branch){
 
     def gitCheckout = new GitCheckoutPrivate()
-    def packageArtifacts = new packageArtifacts()
     def dpCheck = new dpCheck()
     def cleanW = new cleanWorkspace()
   
     try {
         // Clone repository 
         gitCheckout.call(url, creds, branch)
-
-        // Package artifacts
-        packageArtifacts.call()
         
         // perform Dependency Scanning 
         dpCheck.call()
