@@ -4,14 +4,11 @@ import org.avengers.common.*
 import org.avengers.golang.CodeCompilation.*
 
 def call(String url, String creds, String branch){
-  codecompilation = new CodeCompilation
   gitCheckoutPrivate = new GitCheckoutPrivate()
-  linting = new Linting()
-  report = new Report()
+  codecompilation = new codecompilation()
 
-  installationPreRequisites.call()
+  
   gitCheckoutPrivate.call(url, creds, branch)
-  linting.call()
-  report.call()
+  codecompilation.call()
 }
   
