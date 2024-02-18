@@ -11,13 +11,19 @@ def call(String url, String creds, String branch) {
     code = new staticCodeAnalysis()
     arch = new ArchiveArtifacts() 
   
+    
+  
+  try {
     gitCheckoutPrivate.call(url, creds, branch)
     virtual.call()
     dep.call()
     code.call()
-    try {
-        arch.call()
     } catch (Exception e) {
-        echo 'Report generation failed!'
+        // Handle any exceptions during static code analysis
+        echo "An error occurred during static code analysis: ${e.message}"
+    } finally {
+        arch.call()
     }
+  
 }
+
