@@ -5,11 +5,11 @@ import org.avengers.python.staticCodeAnalysis.*
 
 def call(String url, String creds, String branch) {
   
-    GitCheckoutPrivate gitCheckoutPrivate = new GitCheckoutPrivate()
-    VirtualEnv virtual = new VirtualEnv()
-    Dependencies dep = new Dependencies()
-    StaticCodeAnalysis code = new StaticCodeAnalysis()
-    ArchiveArtifacts arch = new ArchiveArtifacts() 
+     gitCheckoutPrivate = new GitCheckoutPrivate()
+     virtual = new VirtualEnv()
+     dep = new Dependencies()
+     code = new StaticCodeAnalysis()
+     arch = new ArchiveArtifacts() 
   
     gitCheckoutPrivate.call(url, creds, branch)
     virtual.call()
