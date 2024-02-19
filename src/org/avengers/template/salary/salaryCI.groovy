@@ -34,7 +34,7 @@ def call(Map config = [:], String gitLeaksVersion, String reportName){
     javaUnitTesting.call()
     }
     catch (e){
-        echo 'Analysis Failed'
+        echo 'Salary CI Failed'
         cleanWorkspace.call()
         throw e
     }
