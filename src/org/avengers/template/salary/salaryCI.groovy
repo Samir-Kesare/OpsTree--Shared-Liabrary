@@ -5,6 +5,8 @@ import org.avengers.common.cleanWorkspace
 import org.avengers.java.compile.*
 import org.avengers.java.staticCodeAnalysis.*
 import org.avengers.java.dependencyCheck.*
+import org.avengers.java.unitTesting.*
+
 
 
 def call(Map config = [:]){
@@ -13,14 +15,15 @@ def call(Map config = [:]){
     def staticCodeAnalysis = new staticCodeAnalysis()
     def cleanWorkspace = new cleanWorkspace()
     def dpCheck = new dpCheck()
+    def javaUnitTesting = new test()
+
 
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
     javaCompile.call()
     dpCheck.call()
     staticCodeAnalysis.call()
-    
-
+    javaUnitTesting.call()
     }
     catch (e){
         echo 'Analysis Failed'
