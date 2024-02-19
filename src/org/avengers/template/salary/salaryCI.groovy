@@ -1,5 +1,6 @@
 package org.avengers.template
 
+import org.avengers.credScanning.*
 import org.avengers.common.gitCheckout
 import org.avengers.common.cleanWorkspace
 import org.avengers.java.compile.*
@@ -9,7 +10,7 @@ import org.avengers.java.unitTesting.*
 import org.avengers.java.bugAnalysis.*
 
 
-def call(Map config = [:]){
+def call(Map config = [:], String gitLeaksVersion, String reportName){
     def gitCheckout = new gitCheckout()
     def javaCompile = new compile()
     def staticCodeAnalysis = new staticCodeAnalysis()
@@ -18,9 +19,14 @@ def call(Map config = [:]){
     def javaUnitTesting = new test()
     def javaBugAnalysis = new bug()
     def javaPublishHtml = new publishHtml()
-
+    def gitLeaks = new GitLeaks()
+    def  scan = new Scan()
+    def cleanAfterArchive = new CleanAfterArchive()
+    
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
+    gitLeaks.call(gitLeaksVersion)
+    scan.call(reportName)
     javaCompile.call()
     dpCheck.call()
     staticCodeAnalysis.call()
@@ -39,5 +45,7 @@ def call(Map config = [:]){
         cleanWorkspace.call()
             // echo 'This will run only if the run was marked as unstable'
         }
+        cleanAfterArchive.call(reportName) 
+
     }
 }
