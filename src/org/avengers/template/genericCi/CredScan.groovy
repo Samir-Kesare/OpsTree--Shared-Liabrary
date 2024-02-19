@@ -10,7 +10,7 @@ def call(Map config = [:], String gitLeaksVersion, String reportName){
   cleanAfterArchive = new CleanAfterArchive()
 
   try {
-    gitclone.call(branch: config.branch, url: config.url  )
+    gitClone.call(branch: config.branch, url: config.url  )
     gitLeaks.call(gitLeaksVersion)
     scan.call(reportName)
     } catch (Exception e) {
