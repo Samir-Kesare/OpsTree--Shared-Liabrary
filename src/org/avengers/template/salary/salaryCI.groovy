@@ -21,7 +21,7 @@ def call(Map config = [:], String gitLeaksVersion, String reportName){
     def javaPublishHtml = new publishHtml()
     def gitLeaks = new GitLeaks()
     def  scan = new Scan()
-    def cleanAfterArchive = new CleanAfterArchive()
+    cleanAfterArchive = new CleanAfterArchive()
     
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
