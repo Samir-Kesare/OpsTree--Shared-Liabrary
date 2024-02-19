@@ -1,19 +1,19 @@
-#package org.avengers.template.golang
+//package org.avengers.template.golang
 
 
-#import org.avengers.common.*
-#import org.avengers.golang.CodeCompilation.*
+//import org.avengers.common.*
+//import org.avengers.golang.CodeCompilation.*
 
-#def call(String url, String creds, String branch){
-  #gitCheckoutPrivate = new GitCheckoutPrivate()
-  #installationgo = new installationgo()
-  #codecompilation = new codecompilation()
+//def call(String url, String creds, String branch){
+  //gitCheckoutPrivate = new GitCheckoutPrivate()
+  //installationgo = new installationgo()
+  //codecompilation = new codecompilation()
 
   
-  #gitCheckoutPrivate.call(url, creds, branch)
-  #installationgo.call()
-  #codecompilation.call()
-#}
+  //gitCheckoutPrivate.call(url, creds, branch)
+  //installationgo.call()
+  //codecompilation.call()
+//}
   
 package org.avengers.template.golang
 
