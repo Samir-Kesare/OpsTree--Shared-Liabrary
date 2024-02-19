@@ -1,8 +1,7 @@
 package org.avengers.template
 
 import org.avengers.credScanning.*
-import org.avengers.common.gitCheckout
-import org.avengers.common.cleanWorkspace
+import org.avengers.common.*
 import org.avengers.java.compile.*
 import org.avengers.java.staticCodeAnalysis.*
 import org.avengers.java.dependencyCheck.*
