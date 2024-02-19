@@ -1,5 +1,6 @@
 package org.avengers.CommitSignOff
 
+
 def call() {
     stage('Fetch Last Commit') {
             checkout scm // This line will check out the source code from the configured Git repository
