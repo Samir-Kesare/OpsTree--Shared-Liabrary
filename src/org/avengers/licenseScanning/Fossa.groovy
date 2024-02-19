@@ -1,4 +1,4 @@
-package org.avengers.golang.CodeCompilation
+package org.avengers.licenseScanning
 
 def call() {
     stage('Download and Install FOSSA') {
