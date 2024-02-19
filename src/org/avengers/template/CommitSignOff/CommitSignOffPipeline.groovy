@@ -3,8 +3,8 @@ package org.avengers.template.CommitSignOff
 import org.avengers.CommitSignOff.*
 
 def call(){
-    def gitCommitSignOff = new GitCommitSignOff()
+    gitCommit = new GitCommit()
 
 
-    gitCommitSignOff.call(gitCommit, gitCommitMsg)
+    gitCommit.call()
 }
