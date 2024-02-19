@@ -4,16 +4,22 @@ import org.avengers.common.gitCheckout
 import org.avengers.common.cleanWorkspace
 import org.avengers.java.compile.*
 import org.avengers.java.staticCodeAnalysis.*
+import org.avengers.java.dependencyCheck.dpCheck
+
 
 def call(Map config = [:]){
     def gitCheckout = new gitCheckout()
     def javaCompile = new compile()
     def staticCodeAnalysis = new staticCodeAnalysis()
     def cleanWorkspace = new cleanWorkspace()
+    def dpCheck = new dpCheck()
+
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
     javaCompile.call()
     staticCodeAnalysis.call()
+    dpCheck.call()
+
     }
     catch (e){
         echo 'Analysis Failed'
