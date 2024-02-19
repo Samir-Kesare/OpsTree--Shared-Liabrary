@@ -1,16 +1,11 @@
 package org.avengers.template.CommitSignOff
 
-import org.avengers.common.*
-import org.avengers.CommitSignOff.*
-    def call(String url, String creds, String branch){
-        gitCheckoutPrivate = new GitCheckoutPrivate()
-        gitcommitsignoff = new GitCommitSignOff()
+import org.avengers.CommitSignOff.GitCommitSignOff
 
-         gitCheckoutPrivate.call()
-        gitcommitsignoff.call()
-    }
+def call(String url, String creds, String branch){
+    def gitCheckoutPrivate = new GitCheckoutPrivate()
+    def gitCommitSignOff = new GitCommitSignOff()
 
-
-
-
-
+    gitCheckoutPrivate.call() 
+    gitCommitSignOff.signOffCommit("gitCommitPlaceholder", "gitCommitMsgPlaceholder")
+}
