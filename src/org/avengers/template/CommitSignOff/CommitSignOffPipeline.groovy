@@ -1,6 +1,6 @@
 package org.avengers.template
 
-import org.avengers.CommitSignOff
+import org.avengers.CommitSignOff.*
 
 class CommitSignOffPipeline {
     static void performCommitSignOff() {
