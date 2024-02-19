@@ -1,6 +1,6 @@
 package org.avengers.common
-
-def call(String reportName){
+// Always Clean 
+def call(){
   stage('Clean Workspace') {
         script {
            cleanWs()
