@@ -16,8 +16,8 @@ def call(Map config = [:]){
 
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
-    dpCheck.call()
     javaCompile.call()
+    dpCheck.call()
     staticCodeAnalysis.call()
     
 
