@@ -6,7 +6,7 @@ import org.avengers.java.compile.*
 import org.avengers.java.staticCodeAnalysis.*
 import org.avengers.java.dependencyCheck.*
 import org.avengers.java.unitTesting.*
-
+import org.avengers.java.bugAnalysis.*
 
 
 def call(Map config = [:]){
@@ -16,13 +16,16 @@ def call(Map config = [:]){
     def cleanWorkspace = new cleanWorkspace()
     def dpCheck = new dpCheck()
     def javaUnitTesting = new test()
-
+    def javaBugAnalysis = new bug()
+    def javaPublishHtml = new publishHtml()
 
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
     javaCompile.call()
     dpCheck.call()
     staticCodeAnalysis.call()
+    javaBugAnalysis.call()
+    javaPublishHtml.call()
     javaUnitTesting.call()
     }
     catch (e){
