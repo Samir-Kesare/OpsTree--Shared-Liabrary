@@ -10,10 +10,21 @@ def call(Map config = [:]){
     def javaCompile = new compile()
     def staticCodeAnalysis = new staticCodeAnalysis()
     def cleanWorkspace = new cleanWorkspace()
-
+    try{
     gitCheckout.call(branch: config.branch, url: config.url  )
     javaCompile.call()
     staticCodeAnalysis.call()
-    cleanWorkspace.call()
-  
+    }
+    catch (e){
+        echo 'Analysis Failed'
+        cleanWorkspace.call()
+        throw e
+    }
+    finally {
+         def currentResult = currentBuild.result ?: 'SUCCESS'
+        if ((currentResult == 'UNSTABLE')||(currentResult == 'ABORTED')) {
+        cleanWorkspace.call()
+            // echo 'This will run only if the run was marked as unstable'
+        }
+    }
 }
