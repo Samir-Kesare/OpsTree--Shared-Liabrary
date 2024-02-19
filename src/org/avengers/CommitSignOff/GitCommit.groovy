@@ -12,7 +12,7 @@ def call() {
                     echo "Last commit by ${gitCommit} has a sign-off."
                 } else {
                     // Check if there are changes to commit
-                    def changes = sh(script: 'git diff --exit-code', returnStatus: true).exitStatus
+                    def changes = sh(script: 'git diff --exit-code', returnStatus: true).returnStatus
                     if (changes == 0) {
                         // No changes to commit
                         echo "No changes to commit."
