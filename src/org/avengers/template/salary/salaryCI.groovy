@@ -27,11 +27,19 @@ def call(Map config = [:], String gitLeaksVersion, String reportName){
     gitLeaks.call(gitLeaksVersion)
     scan.call(reportName)
     javaCompile.call()
-    dpCheck.call()
-    staticCodeAnalysis.call()
-    javaBugAnalysis.call()
-    javaPublishHtml.call()
-    javaUnitTesting.call()
+    parallel dpCheck: {
+        dpCheck.call()
+    },
+    statisCodeAnalysis: {
+        staticCodeAnalysis.call()        
+    },
+    bugAnalysis: {
+        javaBugAnalysis.call()
+        javaPublishHtml.call()
+    },
+    unitTesting:{
+        javaUnitTesting.call()   
+    }
     }
     catch (e){
         echo 'Salary CI Failed'
