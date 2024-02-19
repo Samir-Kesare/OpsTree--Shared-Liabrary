@@ -1,11 +1,16 @@
 package org.avengers.CommitSignOff
 
-class GitCommitSignOff {
-    static void signOffCommit(String gitCommit, String gitCommitMsg) {
+def call() {
+    stage('Fetch Last Commit') {
         script {
+            def gitCommit = sh(script: 'git log -1 --pretty=%an', returnStdout: true).trim()
+            def gitCommitMsg = sh(script: 'git log -1 --pretty=%B', returnStdout: true).trim()
+                    
+            // Check if commit sign-off is present
             if (gitCommitMsg.contains('Signed-off-by:')) {
                 echo "Last commit by ${gitCommit} has a sign-off."
             } else {
+                // Iterate through usernames and find matching email and name
                 def usernameEmailMap = [
                     'vikram445': 'vikram.bisht@opstree.com',
                     'aakashtripathi-snaatak': 'aakash.tripathi.snaatak@mygurukulam.co',
@@ -19,17 +24,14 @@ class GitCommitSignOff {
                     'tripathishikha1': 'shikha.tripathi.snaatak@mygurukulam.co',
                     'shreya-snaatak': 'shikha.tripathi.snaatak@mygurukulam.co',
                     'Nidhi-bhardwaj123': 'nidhi.bhardwaj.snaatak@mygurukulam.co'
-                ]
-
-                def email = usernameEmailMap[gitCommit]
-
-                if (email) {
-                    sh "git commit --amend --signoff --author='${gitCommit} <${email}>' -m '${gitCommitMsg} Signed-off-by: ${email}'"
-                    echo "Commit message updated with sign-off by ${gitCommit}."
-                } else {
-                    error "Unable to find email for ${gitCommit}."
+                ]   
+                def email = usernameEmailMap[gitCommit]           
+                    if (email) {
+                        sh "git commit --amend --signoff --author='${gitCommit} <${email}>' -m '${gitCommitMsg} Signed-off-by: ${email}'"
+                        echo "Commit message updated with sign-off by ${gitCommit}."
+                    } else {
+                        error "Unable to find email for ${gitCommit}."
+                    }
                 }
-            }
         }
     }
-}
