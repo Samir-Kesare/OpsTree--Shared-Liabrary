@@ -6,5 +6,5 @@ def call(){
     def gitCommitSignOff = new GitCommitSignOff()
 
 
-    gitCommitSignOff.signOffCommit(gitCommit, gitCommitMsg)
+    gitCommitSignOff.call(gitCommit, gitCommitMsg)
 }
