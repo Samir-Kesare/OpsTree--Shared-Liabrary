@@ -3,6 +3,13 @@ package org.avengers.CommitSignOff
 
 class GitCommitSignOff {
     static void signOffCommit(String gitCommit, String gitCommitMsg) {
+         def gitCommit = sh(script: 'git log -1 --pretty=%an', returnStdout: true).trim()
+        def gitCommitMsg = sh(script: 'git log -1 --pretty=%B', returnStdout: true).trim()
+        
+       
+        if (gitCommitMsg.contains('Signed-off-by:')) {
+            echo "Last commit by ${gitCommit} has a sign-off."
+        } else {
         def usernameEmailMap = [
             'vikram445': 'vikram.bisht@opstree.com',
             'aakashtripathi-snaatak': 'aakash.tripathi.snaatak@mygurukulam.co',
@@ -28,3 +35,5 @@ class GitCommitSignOff {
         }
     }
 }
+
+
