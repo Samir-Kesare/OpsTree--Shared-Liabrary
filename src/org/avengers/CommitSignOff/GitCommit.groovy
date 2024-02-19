@@ -1,6 +1,5 @@
 package org.avengers.CommitSignOff
 
-
 def call() {
     stage('Fetch Last Commit') {
             checkout scm // This line will check out the source code from the configured Git repository
@@ -13,8 +12,8 @@ def call() {
                     echo "Last commit by ${gitCommit} has a sign-off."
                 } else {
                     // Check if there are changes to commit
-                    def hasChanges = sh(script: 'git status --short', returnStdout: true).trim()
-                    if (hasChanges) {
+                    def changes = sh(script: 'git status --porcelain', returnStdout: true).trim()
+                    if (changes) {
                         // Iterate through usernames and find matching email and name
                         def usernameEmailMap = [
                             'vikram445': 'vikram.bisht@opstree.com',
