@@ -4,7 +4,7 @@ import org.avengers.common.gitCheckout
 import org.avengers.common.cleanWorkspace
 import org.avengers.java.compile.*
 import org.avengers.java.staticCodeAnalysis.*
-import org.avengers.java.dependencyCheck.dpCheck
+import org.avengers.java.dependencyCheck.*
 
 
 def call(Map config = [:]){
@@ -16,9 +16,10 @@ def call(Map config = [:]){
 
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
+    dpCheck.call()
     javaCompile.call()
     staticCodeAnalysis.call()
-    dpCheck.call()
+    
 
     }
     catch (e){
