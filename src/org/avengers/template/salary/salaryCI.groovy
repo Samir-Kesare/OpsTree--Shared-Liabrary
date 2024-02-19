@@ -44,7 +44,7 @@ def call(Map config = [:], String gitLeaksVersion, String reportName){
         cleanWorkspace.call()
             // echo 'This will run only if the run was marked as unstable'
         }
-        cleanAfterArchive.call(reportName) 
+        // cleanAfterArchive.call(reportName) 
 
     }
 }
