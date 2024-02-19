@@ -15,6 +15,8 @@ class CommitSignOffPipeline {
                 if (gitCommitMsg.contains('Signed-off-by:')) {
                     echo "Last commit by ${gitCommit} has a sign-off."
                 } else {
+                    gitCheckoutPrivate = new GitCheckoutPrivate()
+                    gitCheckoutPrivate.call(url, creds, branch)
                     GitCommitSignOff.signOffCommit(gitCommit, gitCommitMsg)
                 }
             }
