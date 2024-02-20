@@ -13,11 +13,11 @@ def call() {
                 } else {
                     // Check if there are changes to commit
                     try {
-                        sh 'git diff --exit-code'
+                       // sh 'git diff --exit-code'
                         // No exception means there are no changes
                         echo "No changes to commit."
                         echo "${gitCommitMsg}"
-                    
+                        echo "${gitCommit}"
                         // Exception indicates there are changes
                         // Add and commit changes
                         sh 'git add .'
@@ -35,14 +35,15 @@ def call() {
                             'Snatak-SamirKesare': 'samir.kesare.snaatak@mygurukulam.co',
                             'Parasharam-Desai': 'parasharam.desai.snaatak@mygurukulam.co',
                             'tripathishikha1': 'shikha.tripathi.snaatak@mygurukulam.co',
-                            'shreya-snaatak': 'shikha.tripathi.snaatak@mygurukulam.co',
+                            'shreya-snaatak': 'shreya.jaiswal.snaatak@mygurukulam.co',
                             'Nidhi-bhardwaj123': 'nidhi.bhardwaj.snaatak@mygurukulam.co',
                 
                         ]   
-                        def email = usernameEmailMap[gitCommit]           
+                        def email = usernameEmailMap[gitCommit] 
                         if (email) {
                             def newCommitMsg = "${gitCommitMsg}\nSigned-off-by: ${email}"
-                            sh "git commit -am '${newCommitMsg}'"
+                            echo "hello if"
+                            sh "git commit -am --signoff '${newCommitMsg}'"
                             echo "New commit message updated with sign-off by ${gitCommit}."
                         } else {
                             error "Unable to find email for ${gitCommit}."
