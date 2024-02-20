@@ -43,7 +43,7 @@ def call() {
                         def email = usernameEmailMap[gitCommit] 
                         echo "hello if 2"
                         echo "${email}"
-                        if (email?.isNotEmpty()) {
+                        if (email) {
                             def newCommitMsg = "${gitCommitMsg}\nSigned-off-by: ${email}"
                             echo "hello if 3"
                             sh "git commit -am --signoff '${newCommitMsg}'"
