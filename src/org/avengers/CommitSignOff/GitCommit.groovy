@@ -2,7 +2,7 @@ package org.avengers.CommitSignOff
 
 def call() {
     stage('Fetch Last Commit') {
-            checkout scm // This line will check out the source code from the configured Git repository
+           // checkout scm // This line will check out the source code from the configured Git repository
             script {
                 def gitCommit = sh(script: 'git log -1 --pretty=%an', returnStdout: true).trim()
                 def gitCommitMsg = sh(script: 'git log -1 --pretty=%B', returnStdout: true).trim()
