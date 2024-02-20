@@ -17,7 +17,7 @@ def call() {
                         // No exception means there are no changes
                         echo "No changes to commit."
                         echo "${gitCommitMsg}"
-                    } catch (Exception e) {
+                    
                         // Exception indicates there are changes
                         // Add and commit changes
                         sh 'git add .'
@@ -48,6 +48,8 @@ def call() {
                             error "Unable to find email for ${gitCommit}."
                         }
                     }
+                } 
+                catch (Exception e) {
                 }
             }
         }
