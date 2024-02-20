@@ -46,7 +46,7 @@ def call() {
                         if (email) {
                             def newCommitMsg = "${gitCommitMsg}\nSigned-off-by: ${email}"
                             echo "hello if 3"
-                            sh "git commit -am --signoff '${newCommitMsg}'"
+                            sh "git commit --amend --signoff -m '${newCommitMsg}'"
                             echo "New commit message updated with sign-off by ${gitCommit}."
                         } else {
                             error "Unable to find email for ${gitCommit}."
