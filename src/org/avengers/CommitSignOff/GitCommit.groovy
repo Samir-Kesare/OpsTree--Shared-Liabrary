@@ -36,6 +36,7 @@ def call() {
                             'tripathishikha1': 'shikha.tripathi.snaatak@mygurukulam.co',
                             'shreya-snaatak': 'shikha.tripathi.snaatak@mygurukulam.co',
                             'Nidhi-bhardwaj123': 'nidhi.bhardwaj.snaatak@mygurukulam.co'
+                            'Khushi Malhotra': 'khushi.malhotra.snaatak@mygurukulam.co'
                         ]   
                         def email = usernameEmailMap[gitCommit]           
                         if (email) {
