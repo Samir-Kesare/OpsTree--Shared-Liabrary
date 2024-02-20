@@ -3,7 +3,7 @@ package org.avengers.template.java
 import org.avengers.common.*
 import org.avengers.java.dast.*
 
-def call(String url, String creds, String branch, String zapVersion){
+def call(String url, String creds, String branch, String zapVersion, String currentWorkspace){
   gitCheckoutPrivate = new GitCheckoutPrivate()
   owaspZapInstallation = new OwaspZapInstallation()
   runZap = new RunZap()
