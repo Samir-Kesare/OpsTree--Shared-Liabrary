@@ -24,6 +24,7 @@ def call() {
                         sh "git commit -m 'Auto-commit before sign-off'"
                         
                         // Iterate through usernames and find matching email and name
+                        echo "hello if 1"
                         def usernameEmailMap = [
                             'vikram445': 'vikram.bisht@opstree.com',
                             'aakashtripathi-snaatak': 'aakash.tripathi.snaatak@mygurukulam.co',
@@ -36,13 +37,14 @@ def call() {
                             'Parasharam-Desai': 'parasharam.desai.snaatak@mygurukulam.co',
                             'tripathishikha1': 'shikha.tripathi.snaatak@mygurukulam.co',
                             'shreya-snaatak': 'shreya.jaiswal.snaatak@mygurukulam.co',
-                            'Nidhi-bhardwaj123': 'nidhi.bhardwaj.snaatak@mygurukulam.co',
+                            'Nidhi-bhardwaj123': 'nidhi.bhardwaj.snaatak@mygurukulam.co'
                 
                         ]   
                         def email = usernameEmailMap[gitCommit] 
+                        echo "hello if 2"
                         if (email) {
                             def newCommitMsg = "${gitCommitMsg}\nSigned-off-by: ${email}"
-                            echo "hello if"
+                            echo "hello if 3"
                             sh "git commit -am --signoff '${newCommitMsg}'"
                             echo "New commit message updated with sign-off by ${gitCommit}."
                         } else {
