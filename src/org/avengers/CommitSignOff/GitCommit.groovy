@@ -16,6 +16,7 @@ def call() {
                         sh 'git diff --exit-code'
                         // No exception means there are no changes
                         echo "No changes to commit."
+                        echo ""${gitCommitMsg}"
                     } catch (Exception e) {
                         // Exception indicates there are changes
                         // Add and commit changes
