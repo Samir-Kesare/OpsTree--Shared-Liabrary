@@ -12,5 +12,6 @@ def call(String url, String creds, String branch, String zapVersion, String curr
   owaspZapInstallation.call(zapVersion)
   runZap.call(zapVersion, currentWorkspace)
 
+  // Archive ZAP scan results
   archiveArtifacts artifacts: '**/results.html', allowEmptyArchive: true
 }
