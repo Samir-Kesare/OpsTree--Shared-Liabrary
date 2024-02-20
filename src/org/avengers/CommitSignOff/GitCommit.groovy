@@ -13,7 +13,7 @@ def call() {
                 } else {
                     // Check if there are changes to commit
                     try {
-                       // sh 'git diff --exit-code'
+                        sh 'git diff --exit-code'
                         // No exception means there are no changes
                         echo "No changes to commit."
                         echo "${gitCommitMsg}"
