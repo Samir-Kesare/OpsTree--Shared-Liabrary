@@ -13,7 +13,7 @@ def call() {
                 } else {
                     // Check if there are changes to commit
                     try {
-                        sh 'ls-al'
+                        sh 'ls -al'
                         sh 'git diff --exit-code'
                         // No exception means there are no changes
                         echo "No changes to commit."
