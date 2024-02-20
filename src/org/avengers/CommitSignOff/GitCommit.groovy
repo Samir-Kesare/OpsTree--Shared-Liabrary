@@ -20,8 +20,8 @@ def call() {
                         echo "${gitCommit}"
                         // Exception indicates there are changes
                         // Add and commit changes
-                        sh 'git add .'
-                        sh "git commit -m 'Auto-commit before sign-off'"
+                       // sh 'git add .'
+                        //sh "git commit -m 'Auto-commit before sign-off'"
                         
                         // Iterate through usernames and find matching email and name
                         echo "hello if 1"
