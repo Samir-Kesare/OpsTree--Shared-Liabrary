@@ -30,7 +30,6 @@ def call() {
                             'code-shantanu': 'shantanu.chauhan.snaatak@mygurukulam.co',
                             'Vishalkk1998': 'vishal.kesarwani.snaatak@mygurukulam.co',
                             'Panu-S-Harshit-Ninja-07': 'harshit.singh.snaatak@mygurukulam.co',
-                            'khushimalhoz': 'khushi.malhotra.snaatak@mygurukulam.co',
                             'Snatak-SamirKesare': 'samir.kesare.snaatak@mygurukulam.co',
                             'Parasharam-Desai': 'parasharam.desai.snaatak@mygurukulam.co',
                             'tripathishikha1': 'shikha.tripathi.snaatak@mygurukulam.co',
