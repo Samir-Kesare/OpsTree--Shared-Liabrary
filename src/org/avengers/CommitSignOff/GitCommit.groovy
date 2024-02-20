@@ -48,7 +48,6 @@ def call() {
                             error "Unable to find email for ${gitCommit}."
                         }
                     }
-                } 
                 catch (Exception e) {
                     echo "ERROR"
                 }
