@@ -13,7 +13,7 @@ def call() {
                 } else {
                     // Check if there are changes to commit
                     try {
-                        sh 'ls -al'
+                       // sh 'ls -al'
                         sh 'git diff --exit-code'
                         // No exception means there are no changes
                         echo "No changes to commit."
@@ -25,7 +25,7 @@ def call() {
                         //sh "git commit -m 'Auto-commit before sign-off'"
                         
                         // Iterate through usernames and find matching email and name
-                        echo "hello if 1"
+                       // echo "hello if 1"
                         def usernameEmailMap = [
                             'vikram445': 'vikram.bisht@opstree.com',
                             'aakashtripathi-snaatak': 'aakash.tripathi.snaatak@mygurukulam.co',
@@ -42,11 +42,11 @@ def call() {
                 
                         ]   
                         def email = usernameEmailMap[gitCommit] 
-                        echo "hello if 2"
+                        //echo "hello if 2"
                         echo "${email}"
                         if (email) {
                             def newCommitMsg = "${gitCommitMsg}\nSigned-off-by: ${email}"
-                            echo "hello if 3"
+                            //echo "hello if 3"
                             sh "git commit --amend --signoff -m '${newCommitMsg}'"
                             echo "New commit message updated with sign-off by ${gitCommit}."
                         } else {
