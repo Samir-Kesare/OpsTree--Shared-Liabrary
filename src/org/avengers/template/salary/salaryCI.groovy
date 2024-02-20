@@ -1,6 +1,6 @@
 package org.avengers.template
 
-// import org.avengers.licenseScanning.*
+import org.avengers.licenseScanning.*
 import org.avengers.credScanning.*
 import org.avengers.common.*
 import org.avengers.java.compile.*
@@ -11,8 +11,8 @@ import org.avengers.java.bugAnalysis.*
 
 
 def call(Map config = [:], String gitLeaksVersion, String reportName){
-    // def fossa = new Fossa()
-    // def scan = new Scan()
+    
+    def licenceScan = new licenceScan()
     def gitCheckout = new gitCheckout()
     def javaCompile = new compile()
     def staticCodeAnalysis = new staticCodeAnalysis()
@@ -28,8 +28,10 @@ def call(Map config = [:], String gitLeaksVersion, String reportName){
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
     gitLeaks.call(gitLeaksVersion)
-    // fossa.call()
-    // scan.call()
+    licenceScan.installFossa()
+    withCredentials([string(credentialsId: 'fossaToken', variable: 'FOSSA_API_KEY')]){
+       licenceScan.scan()
+    }
     scan.call(reportName)
     javaCompile.call()
     parallel dpCheck: {
