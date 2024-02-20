@@ -50,6 +50,7 @@ def call() {
                     }
                 } 
                 catch (Exception e) {
+                    echo "ERROR"
                 }
             }
         }
