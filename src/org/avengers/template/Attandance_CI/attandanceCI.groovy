@@ -1,11 +1,11 @@
 package org.avengers.template
 
-import org.avengers.python.BugsAnalysisBandit.*
+import org.avengers.python.BugsAnalysis.*
 import org.avengers.python.dependencyScanning.*
 import org.avengers.python.staticCodeAnalysis.*
 import org.avengers.common.*  
 
-def call(String url, String creds, String branch, String depVersion, String javaVersion) {
+def call(String url, String creds, String branch, String depVersion,) {
     GitCheckoutPrivate gitCheckoutPrivate = new GitCheckoutPrivate()
     VirtualEnv virtual = new VirtualEnv()
     Dependencies dep = new Dependencies()
@@ -14,12 +14,10 @@ def call(String url, String creds, String branch, String depVersion, String java
     CleanWorkspace cleanWorkspace = new CleanWorkspace()
     BugsAnalysisBandit bugsAnalysisBandit = new BugsAnalysisBandit()
     InstallDependencies installDependencies = new InstallDependencies()
-    JavaDownload javaDownload = new JavaDownload()
     DownloadDependencyCheck downloadDependencyCheck = new DownloadDependencyCheck()
     DependencyCheck dependencyCheck = new DependencyCheck()
-    Clean clean = new Clean()
+    Clean = new Clean()
 
-    javaDownload.call(javaVersion)
     downloadDependencyCheck.call(depVersion) 
     gitCheckoutPrivate.call(url, creds, branch)
     dependencyCheck.call()
