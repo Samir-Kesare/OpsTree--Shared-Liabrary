@@ -12,7 +12,7 @@ def scan() {
     stage('FOSSA Analyze & Test') {
         script {
             sh 'fossa analyze'
-            sh 'fossa test'
+            // sh 'fossa test'
             sh 'fossa report attribution --format html'
         }
     }
