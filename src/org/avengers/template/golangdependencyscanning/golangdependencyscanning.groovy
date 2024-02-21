@@ -1,7 +1,7 @@
 package org.avengers.template.golangdependencyscanning
 
 import org.avengers.common.*
-import org.avengers.GoLangDependencyScanning.*
+import org.avengers.golang.GoLangDependencyScanning.*
 
 def call(String url, String creds, String branch, String depVersion, String javaVersion){
   javaDownload = new JavaDownload()
