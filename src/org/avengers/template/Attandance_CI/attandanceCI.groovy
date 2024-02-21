@@ -5,7 +5,7 @@ import org.avengers.python.dependencyScanning.*
 import org.avengers.python.staticCodeAnalysis.*
 import org.avengers.common.*  
 
-def call(String url, String creds, String branch, String depVersion) {
+def call(String url, String creds, String branch) {
     //common definition
     def gitCheckoutPrivate = new GitCheckoutPrivate()
     def cleanW = new cleanWorkspace()
