@@ -1,4 +1,4 @@
-package org.avengers.template.golangdependencyscanning
+package org.avengers.template.golang
 
 import org.avengers.common.*
 import org.avengers.golang.GoLangDependencyScanning.*
