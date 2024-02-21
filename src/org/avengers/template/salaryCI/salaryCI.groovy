@@ -28,9 +28,9 @@ def call(Map config = [:], String gitLeaksVersion, String reportName){
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
     gitLeaks.call(gitLeaksVersion)
-    licenceScan.installFossa()
     withCredentials([string(credentialsId: 'fossaToken', variable: 'FOSSA_API_KEY')]){
-       licenceScan.scan()
+        licenceScan.installFossa()
+        licenceScan.scan()
     }
     scan.call(reportName)
     javaCompile.call()
