@@ -5,11 +5,12 @@ import org.avengers.python.dependencyScanning.*
 import org.avengers.python.staticCodeAnalysis.*
 import org.avengers.common.*  
 
-def call(String url, String creds, String branch) {
+def call(String url, String creds, String branch, String depVersion, String javaVersion) {
     //common definition
     def gitCheckoutPrivate = new GitCheckoutPrivate()
     def cleanW = new cleanWorkspace()
-
+    def javaDownload = new JavaDownload()
+    
     // Static code analysis definition
     def VirtualEnv = new virtualEnv()
     def Dependencies = new dependencies()
@@ -21,9 +22,9 @@ def call(String url, String creds, String branch) {
     def installDependencies = new InstallDependencies()
 
     // // dependency scanning definition
-    // def downloadDependencyCheck = new DownloadDependencyCheck()
-    // def dependencyCheck = new DependencyCheck()
-    // def cleandp = new Clean()
+    def downloadDependencyCheck = new DownloadDependencyCheck()
+    def dependencyCheck = new DependencyCheck()
+    def cleandp = new Clean()
 
     // static code analysis 
       try {
@@ -39,25 +40,14 @@ def call(String url, String creds, String branch) {
     }
 
     // bugs analysis 
-      bugsAnalysisBandit.call()
-      installDependencies.call()
-    
-    // downloadDependencyCheck.call(depVersion) 
-    // gitCheckoutPrivate.call(url, creds, branch)
-    // dependencyCheck.call()
-    // cleandp.call()
-    // cleanW.call()
-    // bugsAnalysisBandit.call()
-    // installDependencies.call()
-    
-    // try {
-    //     virtual.call()
-    //     dep.call()
-    //     code.call()
-    // } catch (Exception e) {
-    //     // Handle any exceptions during static code analysis
-    //     echo "An error occurred during static code analysis: ${e.message}"
-    // } finally {
-    //     arch.call()
-    // }
+      // bugsAnalysisBandit.call()
+      // installDependencies.call()
+
+    // dependency scanning 
+    javaDownload.call(javaVersion)
+  downloadDependencyCheck.call(depVersion) 
+  gitCheckoutPrivate.call(url, creds, branch)
+  dependencyCheck.call()
+  cleandp.call()
+ 
 }  
