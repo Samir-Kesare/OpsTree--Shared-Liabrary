@@ -5,7 +5,7 @@ import org.avengers.python.dependencyScanning.*
 import org.avengers.python.staticCodeAnalysis.*
 import org.avengers.common.*  
 
-def call(String url, String creds, String branch, String depVersion,) {
+def call(String url, String creds, String branch, String depVersion) {
     GitCheckoutPrivate gitCheckoutPrivate = new GitCheckoutPrivate()
     VirtualEnv virtual = new VirtualEnv()
     Dependencies dep = new Dependencies()
