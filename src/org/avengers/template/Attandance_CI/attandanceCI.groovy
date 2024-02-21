@@ -1,4 +1,4 @@
-package org.avengers.template
+package org.avengers.template.Attandance_CI
 
 import org.avengers.python.BugsAnalysis.*
 import org.avengers.python.dependencyScanning.*
