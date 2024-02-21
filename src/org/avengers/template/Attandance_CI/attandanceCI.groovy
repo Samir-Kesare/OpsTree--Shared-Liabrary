@@ -23,12 +23,12 @@ def call(String url, String creds, String branch, String depVersion) {
     // dependency scanning
     def downloadDependencyCheck = new DownloadDependencyCheck()
     def dependencyCheck = new DependencyCheck()
-
+    def cleandp = new Clean()
 
     downloadDependencyCheck.call(depVersion) 
     gitCheckoutPrivate.call(url, creds, branch)
     dependencyCheck.call()
-    clean.call()
+    cleandp.call()
     cleanW.call()
     bugsAnalysisBandit.call()
     installDependencies.call()
