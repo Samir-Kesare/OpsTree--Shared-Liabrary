@@ -13,6 +13,7 @@ def scan() {
         script {
             sh 'fossa analyze'
             sh 'fossa test'
+            sh 'fossa report attribution --format html'
         }
     }
 }
