@@ -1,4 +1,4 @@
-package org.avengers..GoLangDependencyScanning
+package org.avengers.golang.GoLangDependencyScanning
 
 def call() {
     stage('Clean workspace') {
