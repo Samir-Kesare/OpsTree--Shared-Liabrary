@@ -29,7 +29,7 @@ def call(String url, String creds, String branch, String depVersion) {
     gitCheckoutPrivate.call(url, creds, branch)
     dependencyCheck.call()
     clean.call()
-    cleanWorkspace.call()
+    cleanW.call()
     bugsAnalysisBandit.call()
     installDependencies.call()
     
