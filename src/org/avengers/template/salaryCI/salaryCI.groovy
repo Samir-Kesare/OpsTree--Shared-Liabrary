@@ -28,11 +28,11 @@ def call(Map config = [:], String gitLeaksVersion, String reportName){
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
     gitLeaks.call(gitLeaksVersion)
+    scan.call(reportName)
     withCredentials([string(credentialsId: 'fossaToken', variable: 'FOSSA_API_KEY')]){
         licenceScan.installFossa()
         licenceScan.scan()
     }
-    scan.call(reportName)
     javaCompile.call()
     parallel dpCheck: {
         dpCheck.call()
