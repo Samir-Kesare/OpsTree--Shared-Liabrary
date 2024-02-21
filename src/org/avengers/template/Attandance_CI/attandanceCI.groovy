@@ -7,22 +7,22 @@ import org.avengers.common.*
 
 def call(String url, String creds, String branch, String depVersion) {
     //common
-    gitCheckoutPrivate = new GitCheckoutPrivate()
-    cleanW = new cleanWorkspace()
+    def gitCheckoutPrivate = new GitCheckoutPrivate()
+    def cleanW = new cleanWorkspace()
 
     // Static code analysis
-    VirtualEnv = new virtualEnv()
-    Dependencies = new dependencies()
-    StaticCodeAnalysis = new staticCodeAnalysis()
-    archive = new ArchiveArtifacts() 
+    def VirtualEnv = new virtualEnv()
+    def Dependencies = new dependencies()
+    def StaticCodeAnalysis = new staticCodeAnalysis()
+    def archive = new ArchiveArtifacts() 
 
     // bugs analysis
-    bugsAnalysisBandit = new BugsAnalysisBandit()
-    installDependencies = new InstallDependencies()
+    def bugsAnalysisBandit = new BugsAnalysisBandit()
+    def installDependencies = new InstallDependencies()
 
     // dependency scanning
-    downloadDependencyCheck = new DownloadDependencyCheck()
-    dependencyCheck = new DependencyCheck()
+    def downloadDependencyCheck = new DownloadDependencyCheck()
+    def dependencyCheck = new DependencyCheck()
 
 
     downloadDependencyCheck.call(depVersion) 
