@@ -44,7 +44,7 @@ def call(String url, String creds, String branch, String depVersion, String java
       // installDependencies.call()
 
     // dependency scanning 
-    javaDownload.call(javaVersion)
+  javaDownload.call(javaVersion)
   downloadDependencyCheck.call(depVersion) 
   gitCheckoutPrivate.call(url, creds, branch)
   dependencyCheck.call()
