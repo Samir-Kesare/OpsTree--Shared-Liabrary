@@ -39,7 +39,6 @@ def call(String url, String creds, String branch) {
     }
 
     // bugs analysis 
-      cleanW.call()
       bugsAnalysisBandit.call()
       installDependencies.call()
     
