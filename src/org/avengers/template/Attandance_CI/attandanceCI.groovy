@@ -8,7 +8,7 @@ import org.avengers.common.*
 def call(String url, String creds, String branch) {
     //common definition
     def gitCheckoutPrivate = new GitCheckoutPrivate()
-    def cleanW = new cleanWorkspace()
+    // def cleanW = new cleanWorkspace()
 
     // Static code analysis definition
     def VirtualEnv = new virtualEnv()
@@ -17,20 +17,20 @@ def call(String url, String creds, String branch) {
     def archive = new ArchiveArtifacts() 
 
     // bugs analysis definition
-    def bugsAnalysisBandit = new BugsAnalysisBandit()
-    def installDependencies = new InstallDependencies()
+    // def bugsAnalysisBandit = new BugsAnalysisBandit()
+    // def installDependencies = new InstallDependencies()
 
-    // dependency scanning definition
-    def downloadDependencyCheck = new DownloadDependencyCheck()
-    def dependencyCheck = new DependencyCheck()
-    def cleandp = new Clean()
+    // // dependency scanning definition
+    // def downloadDependencyCheck = new DownloadDependencyCheck()
+    // def dependencyCheck = new DependencyCheck()
+    // def cleandp = new Clean()
 
     // static code analysis 
       try {
-    gitCheckoutPrivate.call(url, creds, branch)
-    VirtualEnv.call()
-    Dependencies.call()
-    StaticCodeAnalysis.call()
+        gitCheckoutPrivate.call(url, creds, branch)
+        VirtualEnv.call()
+        Dependencies.call()
+        StaticCodeAnalysis.call()
     } catch (Exception e) {
         // Handle any exceptions during static code analysis
         echo "An error occurred during static code analysis: ${e.message}"
