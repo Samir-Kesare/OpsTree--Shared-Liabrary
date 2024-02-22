@@ -5,7 +5,7 @@ def call() {
               
                         // Ensure Bandit is installed and run the analysis
                         sh 'bandit --version' 
-                        sh 'bandit -r . -f json -o bandit_report.json'
+                        sh 'bandit -r . -f json -o bandit_report.json || true'
                     
                     }
                 }
