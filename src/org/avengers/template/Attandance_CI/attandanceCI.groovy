@@ -39,11 +39,11 @@ def call(String url, String creds, String branch, String depVersion, String java
         archive.call()
     }
 
-    // bugs analysis 
-      // bugsAnalysisBandit.call()
-      // installDependencies.call()
+     // bugs analysis 
+     bugsAnalysisBandit.call()
+     installDependencies.call()
 
-    // dependency scanning 
+  // dependency scanning 
   javaDownload.call(javaVersion)
   downloadDependencyCheck.call(depVersion) 
   gitCheckoutPrivate.call(url, creds, branch)
