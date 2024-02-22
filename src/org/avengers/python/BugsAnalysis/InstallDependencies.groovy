@@ -1,5 +1,5 @@
 package  org.avengers.python.BugsAnalysis
-def calll() {
+def call() {
   stage('Install Dependencies') {
     // Install necessary dependencies
     script {
