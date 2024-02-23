@@ -27,7 +27,7 @@ stage('code analysis') {
             //steps {
     def scannerHome = tool 'SonarScanner';
     withSonarQubeEnv('sq1') {
-      sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=frontend-18 -Dsonar.sources=. -Dsonar.host.url=http://34.130.229.252:9000  -Dsonar.login=sqp_d82e793e10438301776a7740f7c4c16a595ece60"
+      sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=frontend-18 -Dsonar.sources=. -Dsonar.host.url=http://10.188.0.3:9000  -Dsonar.login=sqp_d82e793e10438301776a7740f7c4c16a595ece60"
     }
             
         // withSonarQubeEnv(installationName: 'sq1') {
