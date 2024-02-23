@@ -8,54 +8,48 @@ import org.avengers.golang.GoLangDependencyScanning.*
 import org.avengers.golang.bugAnalysis.*
 import org.avengers.golang.unitTesting.*
 
-def call(Map config = [:], String gitLeaksVersion, String reportName, String depVersion, String javaVersion){
-
-    def licenceScanner = new licenceScan()
-    def gitCheckout = new gitCheckout()
+def call(Map config = [:], String gitLeaksVersion, String reportName, String depVersion, String javaVersion) {
+    def licenceScanner = new LicenceScan()
+    def gitCheckout = new GitCheckout()
     def gitLeaks = new GitLeaks()
     def scan = new Scan()
-    def compile = new codecompilation() 
+    def compile = new CodeCompilation()
     def installGo = new InstallationPreRequisites()
-    def bugAnalysis = new Linting()
+    def bugAnalysis = new BugAnalysis()
     def generateReport = new GenerateReport()
     def downloadDepCheck = new DownloadDependencyCheck()
     def depCheck = new DependencyCheck()
     def unitTesting = new Testing()
-    def cleanWorkspace = new cleanWorkspace()
+    def cleanWorkspace = new CleanWorkspace()
     def javaDownload = new JavaDownload()
 
-    try{
-    gitCheckout.call(branch: config.branch, url: config.url  )
-    installGo.call()
-    javaDownload.call(javaVersion)
-    downloadDepCheck.call(depVersion)
-    gitLeaks.call(gitLeaksVersion)
-    scan.call(reportName)
-    withCredentials([string(credentialsId: 'fossaToken', variable: 'FOSSA_API_KEY')]){
-        licenceScanner.installFossa()
-        licenceScanner.scan()
-    }
-    compile.call()
-    parallel depCheck: {
-        depCheck.call()
-    },
-    bugAnalysis: {
-        bugAnalysis.call()
-    },
-    unitTesting:{
-        unitTesting.call()   
-    }
-    generateReport.call()
-    }
-    catch (e){
-        echo 'Emplyoee CI Failed'
-        cleanWorkspace.call()
+    try {
+        gitCheckout.branch(config.branch).url(config.url)
+        installGo()
+        javaDownload.javaVersion(javaVersion)
+        downloadDepCheck.depVersion(depVersion)
+        gitLeaks.gitLeaksVersion(gitLeaksVersion)
+        scan.reportName(reportName)
+        withCredentials([string(credentialsId: 'fossaToken', variable: 'FOSSA_API_KEY')]) {
+            licenceScanner.installFossa()
+            licenceScanner.scan()
+        }
+        compile()
+        def results = [:]
+        results.depCheck = { depCheck() }
+        results.bugAnalysis = { bugAnalysis() }
+        results.unitTesting = { unitTesting() }
+        parallel results
+
+        generateReport()
+    } catch (e) {
+        echo 'Employee CI Failed'
+        cleanWorkspace()
         throw e
-    }
-    finally {
-         def currentResult = currentBuild.result ?: 'SUCCESS'
-        if ((currentResult == 'UNSTABLE')||(currentResult == 'ABORTED')) {
-        cleanWorkspace.call()
+    } finally {
+        def currentResult = currentBuild.result ?: 'SUCCESS'
+        if (currentResult in ['UNSTABLE', 'ABORTED']) {
+            cleanWorkspace()
             // echo 'This will run only if the run was marked as unstable'
         }
     }
