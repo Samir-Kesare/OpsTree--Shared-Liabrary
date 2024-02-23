@@ -1,42 +1,43 @@
 package org.avengers.template.Attandance_CI
 
 import org.avengers.python.BugsAnalysis.*
-import org.avengers.python.unitTesting.*
+import org.avengers.python.unitTesting.*    
 import org.avengers.python.dependencyScanning.*
 import org.avengers.python.staticCodeAnalysis.*
-import org.avengers.common.*
+import org.avengers.common.*  
 
 def call(String url, String creds, String branch, String depVersion, String javaVersion) {
-    // Common definition
+    //common definition
     def gitCheckoutPrivate = new GitCheckoutPrivate()
-    def cleanW = new CleanWorkspace()
+    def cleanW = new cleanWorkspace()
     def javaDownload = new JavaDownload()
-
+    
     // Static code analysis definition
-    def virtualEnv = new VirtualEnv()
-    def dependencies = new Dependencies()
-    def staticCodeAnalysis = new StaticCodeAnalysis()
-    def archive = new ArchiveArtifacts()
+    def VirtualEnv = new virtualEnv()
+    def Dependencies = new dependencies()
+    def StaticCodeAnalysis = new staticCodeAnalysis()
+    def archive = new ArchiveArtifacts() 
 
-    // Bugs analysis definition
+    // bugs analysis definition
     def bugsAnalysisBandit = new BugsAnalysisBandit()
     def installDependencies = new InstallDependencies()
-
+    
     // Unit testing definition
-    def installDependency = new InstallDependency()
-    def unitTest = new Testing()
+    def dependency = new installDependency()
+    def UnitTesting = new testing() 
 
-    // Dependency scanning definition
+    
+    // // dependency scanning definition
     def downloadDependencyCheck = new DownloadDependencyCheck()
     def dependencyCheck = new DependencyCheck()
-    def cleanDp = new Clean()
+    def cleandp = new Clean()
 
-    try {
-        // Static code analysis
+    // static code analysis 
+      try {
         gitCheckoutPrivate.call(url, creds, branch)
-        virtualEnv.call()
-        dependencies.call()
-        staticCodeAnalysis.call()
+        VirtualEnv.call()
+        Dependencies.call()
+        StaticCodeAnalysis.call()
     } catch (Exception e) {
         // Handle any exceptions during static code analysis
         echo "An error occurred during static code analysis: ${e.message}"
@@ -44,18 +45,20 @@ def call(String url, String creds, String branch, String depVersion, String java
         archive.call()
     }
 
-    // Bugs analysis
-    bugsAnalysisBandit.call()
-    installDependencies.call()
+     // bugs analysis 
+     bugsAnalysisBandit.call()
+     installDependencies.call()
 
     // Unit Testing
-    installDependency.call()
-    unitTest.call()
 
-    // Dependency scanning
-    javaDownload.call(javaVersion)
-    downloadDependencyCheck.call(depVersion)
-    gitCheckoutPrivate.call(url, creds, branch)
-    dependencyCheck.call()
-    cleanDp.call()
-}
+    
+    Installdependency.call()
+    unitTest.call()
+  
+    
+  // dependency scanning 
+  javaDownload.call(javaVersion)
+  downloadDependencyCheck.call(depVersion) 
+  gitCheckoutPrivate.call(url, creds, branch)
+  dependencyCheck.call()
+  cleandp.call()
