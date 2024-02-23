@@ -12,9 +12,9 @@ def call(Map config = [:]){
     def cleanWorkspace = new cleanWorkspace()
 
     gitCheckout.call(branch: config.branch, url: config.url  )
+    virtenv.call()
     Installdependency.call()
     unitTest.call()
-    virtenv.call()
     cleanWorkspace.call()
   
 }
