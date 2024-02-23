@@ -8,7 +8,7 @@ import org.avengers.golang.GoLangDependencyScanning.*
 import org.avengers.golang.bugAnalysis.*
 import org.avengers.golang.unitTesting.*
 
-def call(Map config = [:], String gitLeaksVersion, String reportName, String depVersion){
+def call(Map config = [:], String gitLeaksVersion, String reportName, String depVersion, String javaVersion){
 
     def licenceScanner = new licenceScan()
     def gitCheckout = new gitCheckout()
