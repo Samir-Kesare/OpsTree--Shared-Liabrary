@@ -1,6 +1,7 @@
 package org.avengers.template.Attandance_CI
 
 import org.avengers.python.BugsAnalysis.*
+import org.avengers.python.unitTesting.*    
 import org.avengers.python.dependencyScanning.*
 import org.avengers.python.staticCodeAnalysis.*
 import org.avengers.common.*  
@@ -20,7 +21,13 @@ def call(String url, String creds, String branch, String depVersion, String java
     // bugs analysis definition
     def bugsAnalysisBandit = new BugsAnalysisBandit()
     def installDependencies = new InstallDependencies()
+    
+    // Unit testing definition
+    def dependency = new installDependency()
+    def VirtualEnv = new virtENV()
+    def UnitTesting = new testing() 
 
+    
     // // dependency scanning definition
     def downloadDependencyCheck = new DownloadDependencyCheck()
     def dependencyCheck = new DependencyCheck()
