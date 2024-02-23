@@ -46,7 +46,7 @@ def call(String url, String creds, String branch, String depVersion, String java
 
      // bugs analysis 
      bugsAnalysisBandit.call()
-     installDependencies.call()
+     //installDependencies.call()
 
     // Unit Testing
 
