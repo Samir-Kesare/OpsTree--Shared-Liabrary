@@ -3,27 +3,15 @@ package org.avengers.template
 import org.avengers.licenseScanning.licenceScan
 import org.avengers.credScanning.*
 import org.avengers.common.*
-import org.avengers.java.compile.*
-import org.avengers.java.staticCodeAnalysis.*
-import org.avengers.java.dependencyCheck.*
-import org.avengers.java.unitTesting.*
-import org.avengers.java.bugAnalysis.*
 
 
 def call(Map config = [:], String gitLeaksVersion, String reportName){
     
     def licenceScan = new licenceScan()
     def gitCheckout = new gitCheckout()
-    def javaCompile = new compile()
-    def staticCodeAnalysis = new staticCodeAnalysis()
     def cleanWorkspace = new cleanWorkspace()
-    def dpCheck = new dpCheck()
-    def javaUnitTesting = new test()
-    def javaBugAnalysis = new bug()
-    def javaPublishHtml = new publishHtml()
     def gitLeaks = new GitLeaks()
     def  scan = new Scan()
-    cleanAfterArchive = new CleanAfterArchive()
     
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
@@ -33,23 +21,10 @@ def call(Map config = [:], String gitLeaksVersion, String reportName){
         licenceScan.installFossa()
         licenceScan.scan()
     }
-    javaCompile.call()
-    parallel dpCheck: {
-        dpCheck.call()
-    },
-    staticCodeAnalysis: {
-        staticCodeAnalysis.call()        
-    },
-    bugAnalysis: {
-        javaBugAnalysis.call()
-        javaPublishHtml.call()
-    },
-    unitTesting:{
-        javaUnitTesting.call()   
-    }
+    
     }
     catch (e){
-        echo 'Salary CI Failed'
+        echo 'Frontend CI Failed'
         cleanWorkspace.call()
         throw e
     }
