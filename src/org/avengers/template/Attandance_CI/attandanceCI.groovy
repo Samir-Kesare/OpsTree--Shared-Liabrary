@@ -62,3 +62,4 @@ def call(String url, String creds, String branch, String depVersion, String java
   gitCheckoutPrivate.call(url, creds, branch)
   dependencyCheck.call()
   cleandp.call()
+}    
