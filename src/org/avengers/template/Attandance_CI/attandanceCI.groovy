@@ -20,12 +20,10 @@ def call(String url, String creds, String branch, String depVersion, String java
 
     // bugs analysis definition
     def bugsAnalysisBandit = new BugsAnalysisBandit()
-    def installDependencies = new InstallDependencies()
     
     // Unit testing definition
     def Installdependency = new installDependency()
-    def unitTest = new testing() 
-    
+    def unitTest = new testing()   
 
     
     // // dependency scanning definition
