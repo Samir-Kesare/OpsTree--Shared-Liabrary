@@ -26,26 +26,26 @@ def call(Map config = [:], String gitLeaksVersion, String reportName, String dep
 
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
-    installGo.call()
-    javaDownload.call(javaVersion)
-    downloadDepCheck.call(depVersion)
-    gitLeaks.call(gitLeaksVersion)
-    scan.call(reportName)
-    withCredentials([string(credentialsId: 'fossaToken', variable: 'FOSSA_API_KEY')]){
-        licenceScanner.installFossa()
-        licenceScanner.scan()
-    }
-    compile.call()
-    parallel depCheck: {
-        depCheck.call()
-    },
-    bugAnalysis: {
-        bugAnalysis.call()
-    },
-    unitTesting:{
-        unitTesting.call()   
-    }
-    generateReport.call()
+    // installGo.call()
+    // javaDownload.call(javaVersion)
+    // downloadDepCheck.call(depVersion)
+    // gitLeaks.call(gitLeaksVersion)
+    // scan.call(reportName)
+    // withCredentials([string(credentialsId: 'fossaToken', variable: 'FOSSA_API_KEY')]){
+    //     licenceScanner.installFossa()
+    //     licenceScanner.scan()
+    // }
+    // compile.call()
+    // parallel depCheck: {
+    //     depCheck.call()
+    // },
+    // bugAnalysis: {
+    //     bugAnalysis.call()
+    // },
+    // unitTesting:{
+    //     unitTesting.call()   
+    // }
+    // generateReport.call()
     }
     catch (e){
         echo 'Emplyoee CI Failed'
