@@ -17,7 +17,7 @@ def dpCheck() {
         stage('Dependency Check') {
             steps {
                 sh 'npm install'
-                dependencyCheck additionalArguments: '--project dp-check --scan /var/lib/jenkins/workspace/dp-check  --format HTML', odcInstallation: 'dependency-check'
+                dependencyCheck additionalArguments: '--project dp-check --scan /var/lib/jenkins/workspace/dp-check  --format HTML', odcInstallation: 'DP-check'
             }
         }
 }
