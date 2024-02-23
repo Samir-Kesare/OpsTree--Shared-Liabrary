@@ -9,18 +9,18 @@ import org.avengers.golang.bugAnalysis.*
 import org.avengers.golang.unitTesting.*
 
 def call(Map config = [:], String gitLeaksVersion, String reportName, String depVersion, String javaVersion) {
-    def licenceScanner = new LicenceScan()
-    def gitCheckout = new GitCheckout()
+    def licenceScanner = new licenceScan()
+    def gitCheckout = new gitCheckout()
     def gitLeaks = new GitLeaks()
     def scan = new Scan()
-    def compile = new CodeCompilation()
+    def compile = new codecompilation()
     def installGo = new InstallationPreRequisites()
-    def bugAnalysis = new BugAnalysis()
+    def bugAnalysis = new Linting()
     def generateReport = new GenerateReport()
     def downloadDepCheck = new DownloadDependencyCheck()
     def depCheck = new DependencyCheck()
     def unitTesting = new Testing()
-    def cleanWorkspace = new CleanWorkspace()
+    def cleanWorkspace = new cleanWorkspace()
     def javaDownload = new JavaDownload()
 
     try {
