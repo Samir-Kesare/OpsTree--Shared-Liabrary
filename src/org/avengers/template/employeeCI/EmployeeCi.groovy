@@ -28,6 +28,7 @@ def call(Map config = [:], String gitLeaksVersion, String reportName, String dep
     gitCheckout.call(branch: config.branch, url: config.url  )
     installGo.call()
     javaDownload.call(javaVersion)
+    downloadDepCheck.call(depVersion)
     gitLeaks.call(gitLeaksVersion)
     scan.call(reportName)
     withCredentials([string(credentialsId: 'fossaToken', variable: 'FOSSA_API_KEY')]){
@@ -36,7 +37,6 @@ def call(Map config = [:], String gitLeaksVersion, String reportName, String dep
     }
     compile.call()
     parallel depCheck: {
-        downloadDepCheck.call(depVersion)
         depCheck.call()
     },
     bugAnalysis: {
