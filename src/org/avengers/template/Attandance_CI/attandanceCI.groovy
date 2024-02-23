@@ -24,7 +24,6 @@ def call(String url, String creds, String branch, String depVersion, String java
     
     // Unit testing definition
     def dependency = new installDependency()
-    def VirtualEnv = new virtENV()
     def UnitTesting = new testing() 
 
     
