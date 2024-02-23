@@ -22,10 +22,12 @@ def call(Map config = [:], String gitLeaksVersion, String reportName, String dep
     def depCheck = new DependencyCheck()
     def unitTesting = new Testing()
     def cleanWorkspace = new cleanWorkspace()
+    def javaDownload = new JavaDownload()
 
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
-    installGo.call()    
+    installGo.call()
+    javaDownload.call(javaVersion)
     gitLeaks.call(gitLeaksVersion)
     scan.call(reportName)
     withCredentials([string(credentialsId: 'fossaToken', variable: 'FOSSA_API_KEY')]){
