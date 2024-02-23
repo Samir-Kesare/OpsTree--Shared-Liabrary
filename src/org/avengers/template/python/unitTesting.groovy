@@ -6,11 +6,15 @@ import org.avengers.python.unitTesting.*
 
 def call(Map config = [:]){
     def gitCheckout = new gitCheckout()
-    def javaUnitTesting = new test()
+    def Installdependency = new installDependency()
+    def unitTest = new testing()
+    def virtenv = new virtENV()
     def cleanWorkspace = new cleanWorkspace()
 
     gitCheckout.call(branch: config.branch, url: config.url  )
-    javaUnitTesting.call()
+    Installdependency()
+    unitTest()
+    virtenv()
     cleanWorkspace.call()
   
 }
