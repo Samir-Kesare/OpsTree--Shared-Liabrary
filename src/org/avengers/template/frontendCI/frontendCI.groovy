@@ -3,7 +3,7 @@ package org.avengers.template
 import org.avengers.licenseScanning.licenceScan
 import org.avengers.credScanning.*
 import org.avengers.common.*
-
+import org.avengers.react.*
 
 def call(Map config = [:], String gitLeaksVersion, String reportName){
     
@@ -12,7 +12,7 @@ def call(Map config = [:], String gitLeaksVersion, String reportName){
     def cleanWorkspace = new cleanWorkspace()
     def gitLeaks = new GitLeaks()
     def  scan = new Scan()
-    
+    def frontendChecks = new frontendChecks()
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
     gitLeaks.call(gitLeaksVersion)
@@ -21,7 +21,8 @@ def call(Map config = [:], String gitLeaksVersion, String reportName){
         licenceScan.installFossa()
         licenceScan.scan()
     }
-    
+    frontendChecks.bugAnalysis()
+    frontendChecks.dpCheck()
     }
     catch (e){
         echo 'Frontend CI Failed'
