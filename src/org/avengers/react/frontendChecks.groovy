@@ -30,8 +30,10 @@ stage('code analysis') {
             // sh 'ls ${scannerHome}'
             // sh 'echo ${scannerHome}'
             // withCredentials([string(credentialsId: 'frontend-sonar', variable: 'token')]) {
+             // sonar-scanner \
                 sh '''
-                sonar-scanner \
+             
+                /opt/sonarqube/current/bin/linux-x86-64/sonar.sh \
                   -Dsonar.projectKey=frontend-18 \
                   -Dsonar.sources=. \
                   -Dsonar.host.url=http://34.130.229.252:9000 \
