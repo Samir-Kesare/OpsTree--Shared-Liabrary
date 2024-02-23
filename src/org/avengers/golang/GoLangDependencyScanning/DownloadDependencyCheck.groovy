@@ -1,4 +1,5 @@
-package org.avengers.golang.DownloadDependencyCheck
+package org.avengers.golang.GoLangDependencyScanning
+
 def call(String depVersion) {
     stage('Download Dependency Check') {
             script {
