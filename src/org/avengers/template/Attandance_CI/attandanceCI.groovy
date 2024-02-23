@@ -23,8 +23,9 @@ def call(String url, String creds, String branch, String depVersion, String java
     def installDependencies = new InstallDependencies()
     
     // Unit testing definition
-    def dependency = new installDependency()
+    def Installdependency = new installDependency()
     def UnitTesting = new testing() 
+    
 
     
     // // dependency scanning definition
