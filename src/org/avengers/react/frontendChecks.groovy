@@ -25,21 +25,38 @@ def dpCheck() {
 def codeAnalysis() {
 stage('code analysis') {
             //steps {
-            withSonarQubeEnv(installationName: 'sq1') {
+    def scannerHome = tool 'SonarScanner';
+    withSonarQubeEnv() {
+      sh "${scannerHome}/bin/sonar-scanner"
+    }
+            
+        // withSonarQubeEnv(installationName: 'sq1') {
                 
             // sh 'ls ${scannerHome}'
             // sh 'echo ${scannerHome}'
             // withCredentials([string(credentialsId: 'frontend-sonar', variable: 'token')]) {
              // sonar-scanner \
-                sh '''
+
+                // sh '''
              
-                /opt/sonarqube/current/bin/linux-x86-64/sonar.sh \
-                  -Dsonar.projectKey=frontend-18 \
-                  -Dsonar.sources=. \
-                  -Dsonar.host.url=http://34.130.229.252:9000 \
-                  -Dsonar.login=sqp_d82e793e10438301776a7740f7c4c16a595ece60
-                '''
-                // }
-            }
+                // /opt/sonarqube/current/bin/linux-x86-64/sonar.sh \
+                //   -Dsonar.projectKey=frontend-18 \
+                //   -Dsonar.sources=. \
+                //   -Dsonar.host.url=http://34.130.229.252:9000 \
+                //   -Dsonar.login=sqp_d82e793e10438301776a7740f7c4c16a595ece60
+                // '''
+                // // }
+            // }
         }         
 }
+// node {
+//   stage('SCM') {
+//     checkout scm
+//   }
+//   stage('SonarQube Analysis') {
+//     def scannerHome = tool 'SonarScanner';
+//     withSonarQubeEnv() {
+//       sh "${scannerHome}/bin/sonar-scanner"
+//     }
+//   }
+// }
