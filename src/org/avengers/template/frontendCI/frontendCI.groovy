@@ -27,8 +27,8 @@ def call(Map config = [:], String gitLeaksVersion, String reportName){
     }
     catch (e){
         echo 'Frontend CI Failed'
-        cleanWorkspace.call()
         throw e
+        cleanWorkspace.call()
     }
     finally {
          def currentResult = currentBuild.result ?: 'SUCCESS'
