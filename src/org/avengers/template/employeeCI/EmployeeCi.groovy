@@ -30,7 +30,7 @@ def call(Map config = [:], String gitLeaksVersion, String reportName, String dep
     javaDownload.call(javaVersion)
     downloadDepCheck.call(depVersion)
     gitLeaks.call(gitLeaksVersion)
-    scan.call(reportName)
+    // scan.call(reportName)
     withCredentials([string(credentialsId: 'fossaToken', variable: 'FOSSA_API_KEY')]){
         licenceScanner.installFossa()
         licenceScanner.scan()
