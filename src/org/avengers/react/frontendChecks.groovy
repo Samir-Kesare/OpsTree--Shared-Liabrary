@@ -22,3 +22,18 @@ def dpCheck() {
             // }
         }
 }
+def codeAnalysis() {
+stage('code analysis') {
+            //steps {
+            // withSonarQubeEnv(installationName: 'sq1') { 
+            withCredentials([string(credentialsId: 'frontend-sonar', variable: 'token')]) {
+                sh '''
+                sonar-scanner \
+                  -Dsonar.projectKey=frontend-18 \
+                  -Dsonar.sources=. \
+                  -Dsonar.host.url=http://34.130.229.252:9000 \
+                  -Dsonar.login=sqp_d82e793e10438301776a7740f7c4c16a595ece60
+                '''
+                } 
+        }         
+}
