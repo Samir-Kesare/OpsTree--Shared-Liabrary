@@ -22,7 +22,8 @@ def call(Map config = [:], String gitLeaksVersion, String reportName){
         licenceScan.scan()
     }
     frontendChecks.bugAnalysis()
-    frontendChecks.dpCheck()
+    // frontendChecks.dpCheck()
+    frontendChecks.codeAnalysis()
     }
     catch (e){
         echo 'Frontend CI Failed'
