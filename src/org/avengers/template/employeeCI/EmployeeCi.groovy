@@ -13,7 +13,7 @@ def call(Map config = [:], String gitLeaksVersion, String reportName, String dep
     def licenceScanner = new licenceScan()
     def gitCheckout = new gitCheckout()
     def gitLeaks = new GitLeaks()
-    def scan = new Scan()
+    def credScan = new Scan()
     def compile = new codecompilation() 
     def installGo = new InstallationPreRequisites()
     def bugAnalysis = new Linting()
@@ -26,15 +26,15 @@ def call(Map config = [:], String gitLeaksVersion, String reportName, String dep
 
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
-    installGo.call()
-    javaDownload.call(javaVersion)
-    downloadDepCheck.call(depVersion)
     gitLeaks.call(gitLeaksVersion)
-    // scan.call(reportName)
+    credScan.call(reportName)
     withCredentials([string(credentialsId: 'fossaToken', variable: 'FOSSA_API_KEY')]){
         licenceScanner.installFossa()
         licenceScanner.scan()
     }
+    installGo.call()
+    javaDownload.call(javaVersion)
+    downloadDepCheck.call(depVersion)
     compile.call()
     parallel depCheck: {
         depCheck.call()
