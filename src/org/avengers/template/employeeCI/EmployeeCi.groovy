@@ -1,6 +1,6 @@
 package org.avengers.template.employeeCI
 
-import org.avengers.licenseScanning.licenceScan
+import org.avengers.licenseScanning.*
 import org.avengers.credScanning.*
 import org.avengers.common.*
 import org.avengers.golang.CodeCompilation.*
