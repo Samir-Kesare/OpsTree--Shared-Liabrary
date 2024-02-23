@@ -17,7 +17,7 @@ def bugAnalysis() {
 def dpCheck() {
         stage('Dependency Check') {
             // steps {
-                sh 'npm install'
+                // sh 'npm install'
                 dependencyCheck additionalArguments: '--project dp-check --scan /var/lib/jenkins/workspace/frontendCI/  --format HTML', odcInstallation: 'DP-check'
             // }
         }
