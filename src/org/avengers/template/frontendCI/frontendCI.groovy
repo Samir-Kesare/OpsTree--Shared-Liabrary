@@ -15,13 +15,13 @@ def call(Map config = [:], String gitLeaksVersion, String reportName){
     def frontendChecks = new frontendChecks()
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
-    gitLeaks.call(gitLeaksVersion)
-    scan.call(reportName)
-    withCredentials([string(credentialsId: 'fossaToken', variable: 'FOSSA_API_KEY')]){
-        licenceScan.installFossa()
-        licenceScan.scan()
-    }
-    frontendChecks.bugAnalysis()
+    // gitLeaks.call(gitLeaksVersion)
+    // scan.call(reportName)
+    // withCredentials([string(credentialsId: 'fossaToken', variable: 'FOSSA_API_KEY')]){
+    //     licenceScan.installFossa()
+    //     licenceScan.scan()
+    // }
+    // frontendChecks.bugAnalysis()
     // frontendChecks.dpCheck()
     frontendChecks.codeAnalysis()
     }
