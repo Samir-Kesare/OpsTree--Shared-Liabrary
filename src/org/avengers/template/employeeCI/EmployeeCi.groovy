@@ -10,7 +10,7 @@ import org.avengers.golang.unitTesting.*
 
 def call(Map config = [:], String gitLeaksVersion, String reportName, String depVersion){
 
-    def licenceScan = new licenceScan()
+    def licenceScanner = new licenceScan()
     def gitCheckout = new gitCheckout()
     def gitLeaks = new GitLeaks()
     def scan = new Scan()
@@ -32,8 +32,8 @@ def call(Map config = [:], String gitLeaksVersion, String reportName, String dep
     gitLeaks.call(gitLeaksVersion)
     scan.call(reportName)
     withCredentials([string(credentialsId: 'fossaToken', variable: 'FOSSA_API_KEY')]){
-        licenceScan.installFossa()
-        licenceScan.scan()
+        licenceScanner.installFossa()
+        licenceScanner.scan()
     }
     compile.call()
     parallel depCheck: {
