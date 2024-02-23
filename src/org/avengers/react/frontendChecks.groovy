@@ -26,7 +26,7 @@ def codeAnalysis() {
 stage('code analysis') {
             //steps {
     def scannerHome = tool 'SonarScanner';
-    withSonarQubeEnv() {
+    withSonarQubeEnv('sq1') {
       sh "${scannerHome}/bin/sonar-scanner"
     }
             
