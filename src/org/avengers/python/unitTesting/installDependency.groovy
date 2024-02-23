@@ -1,14 +1,14 @@
 package org.avengers.python.unitTesting
 
-def call(){           
-        stage('Creat Virtual ENV') 
+def call(){   
+        stage('Install Dependencies') 
         {
             steps 
             {
                 script 
                 {
-                  sh 'python3 -m venv myenv'
-                  sh '. myenv/bin/activate'
+                  sh 'pip install -r requirements.txt'
+                  sh 'pip install pytest pytest-html'
                 }
             }
         }
