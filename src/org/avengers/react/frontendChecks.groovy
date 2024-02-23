@@ -25,9 +25,10 @@ def dpCheck() {
 def codeAnalysis() {
 stage('code analysis') {
             //steps {
+            withSonarQubeEnv(installationName: 'sq1') {
+                
             sh 'ls ${scannerHome}'
             sh 'echo ${scannerHome}'
-            withSonarQubeEnv(installationName: 'sq1') { 
             withCredentials([string(credentialsId: 'frontend-sonar', variable: 'token')]) {
                 sh '''
                 sonar-scanner \
