@@ -13,7 +13,7 @@ def call(String url, String creds, String branch, String depVersion, String java
   javaDownload.call(javaVersion)
   downloadDependencyCheck.call(depVersion) 
   gitCheckoutPrivate.call(url, creds, branch)
-  dependencyCheck.call()
+  dependencyCheck.call(depreport)
   clean.call()
 }
   
