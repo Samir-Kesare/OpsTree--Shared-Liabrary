@@ -7,7 +7,8 @@ import org.avengers.golang.CodeCompilation.*
 import org.avengers.golang.GoLangDependencyScanning.*
 import org.avengers.golang.bugAnalysis.*
 import org.avengers.golang.unitTesting.*
-
+import org.avengers.golang.StaticAnalysis.*
+    
 def call(Map config = [:], String gitLeaksVersion, String depVersion, String javaVersion, String gitLeaksReport, String uniTestReport, String BugAnalysisreport, String depreport) {
 
     def licenceScanner = new licenceScan()
@@ -23,6 +24,7 @@ def call(Map config = [:], String gitLeaksVersion, String depVersion, String jav
     def javaDownload = new JavaDownload()
     def cleanForEmp =new CleanForEmp()
     def cleanWorkSpace =new CleanWorkSpace()
+    def staticAnalysis = new gostaticanalysis()
 
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
@@ -37,6 +39,9 @@ def call(Map config = [:], String gitLeaksVersion, String depVersion, String jav
     compile.call()
     parallel depCheck: {
         depCheck.call(depreport)
+    },
+    staticAnalysis: {
+        staticAnalysis.call()
     },
     bugAnalysis: {
         bugAnalysis.call()
