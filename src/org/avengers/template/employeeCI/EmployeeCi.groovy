@@ -20,8 +20,9 @@ def call(Map config = [:], String gitLeaksVersion, String depVersion, String jav
     def downloadDepCheck = new DownloadDependencyCheck()
     def depCheck = new DependencyCheck()
     def unitTesting = new Testing()
-    def cleanWorkspace = new cleanWorkspace()
+    // def cleanWorkspace = new cleanWorkspace()
     def javaDownload = new JavaDownload()
+    def cleanAfterArchive =new CleanAfterArchive()
 
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
@@ -47,14 +48,18 @@ def call(Map config = [:], String gitLeaksVersion, String depVersion, String jav
     }
     catch (e){
         echo 'Emplyoee CI Failed'
-        cleanWorkspace.call()
+        // cleanWorkspace.call()
         throw e
     }
     finally {
-         def currentResult = currentBuild.result ?: 'SUCCESS'
-        if ((currentResult == 'UNSTABLE')||(currentResult == 'ABORTED')) {
-        cleanWorkspace.call()
-            // echo 'This will run only if the run was marked as unstable'
-        }
+        //  def currentResult = currentBuild.result ?: 'SUCCESS'
+        // if ((currentResult == 'UNSTABLE')||(currentResult == 'ABORTED')) {
+        // cleanWorkspace.call()
+        //     // echo 'This will run only if the run was marked as unstable'
+        cleanAfterArchive.call(gitLeaksReport)
+        cleanAfterArchive.call(uniTestReport)
+        cleanAfterArchive.call(BugAnalysisreport)
+        cleanAfterArchive.call(depreport)
+        // }
     }
 }
