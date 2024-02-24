@@ -35,10 +35,10 @@ def call(Map config = [:], String gitLeaksVersion, String depVersion, String jav
     javaDownload.call(javaVersion)
     downloadDepCheck.call(depVersion)
     compile.call()
-    // parallel depCheck: {
-    //     depCheck.call(depreport)
-    // },
-    parallel bugAnalysis: {
+    parallel depCheck: {
+        depCheck.call(depreport)
+    },
+    bugAnalysis: {
         bugAnalysis.call()
     },
     unitTesting:{
