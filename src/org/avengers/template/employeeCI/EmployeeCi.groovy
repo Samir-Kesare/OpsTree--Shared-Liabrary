@@ -20,9 +20,9 @@ def call(Map config = [:], String gitLeaksVersion, String depVersion, String jav
     def downloadDepCheck = new DownloadDependencyCheck()
     def depCheck = new DependencyCheck()
     def unitTesting = new Testing()
-    def cleanWorkspace = new cleanWorkspace()
     def javaDownload = new JavaDownload()
     def cleanForEmp =new CleanForEmp()
+    def cleanWorkSpace =new CleanWorkSpace()
 
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
@@ -48,10 +48,11 @@ def call(Map config = [:], String gitLeaksVersion, String depVersion, String jav
     }
     catch (e){
         echo 'Emplyoee CI Failed'
-        cleanWorkspace.call()
+        cleanWorkSpace.call()
         throw e
     }
     finally {
         cleanForEmp.call(gitLeaksReport, uniTestReport, BugAnalysisreport, depreport)
+        cleanWorkSpace.call()
     }
 }
