@@ -3,6 +3,7 @@ package org.avengers.template.golang
 
 import org.avengers.common.*
 import org.avengers.golang.StaticAnalysis.*
+import org.avengers.golang.CodeCompilation.*
 
 def call(String url, String branch){
 
