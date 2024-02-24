@@ -8,12 +8,11 @@ import org.avengers.golang.GoLangDependencyScanning.*
 import org.avengers.golang.bugAnalysis.*
 import org.avengers.golang.unitTesting.*
 
-def call(Map config = [:], String gitLeaksVersion, String reportName, String depVersion, String javaVersion) {
+def call(Map config = [:], String gitLeaksVersion, String depVersion, String javaVersion, String gitLeaksReport, String uniTestReport, String BugAnalysisreport, String depreport) {
 
     def licenceScanner = new licenceScan()
     def gitCheckout = new gitCheckout()
     def gitLeaks = new GitLeaks()
-    def credScan = new Scan()
     def compile = new codecompilation() 
     def installGo = new InstallationPreRequisites()
     def bugAnalysis = new Linting()
@@ -27,7 +26,6 @@ def call(Map config = [:], String gitLeaksVersion, String reportName, String dep
     try{
     gitCheckout.call(branch: config.branch, url: config.url  )
     gitLeaks.call(gitLeaksVersion)
-    credScan.call(reportName)
     withCredentials([string(credentialsId: 'fossaToken', variable: 'FOSSA_API_KEY')]){
         licenceScanner.installFossa()
         licenceScanner.scan()
@@ -37,7 +35,7 @@ def call(Map config = [:], String gitLeaksVersion, String reportName, String dep
     downloadDepCheck.call(depVersion)
     compile.call()
     parallel depCheck: {
-        depCheck.call()
+        depCheck.call(depreport)
     },
     bugAnalysis: {
         bugAnalysis.call()
@@ -45,7 +43,7 @@ def call(Map config = [:], String gitLeaksVersion, String reportName, String dep
     unitTesting:{
         unitTesting.call()   
     }
-    generateReport.call()
+    generateReport.call(gitLeaksReport, uniTestReport, BugAnalysisreport)
     }
     catch (e){
         echo 'Emplyoee CI Failed'
