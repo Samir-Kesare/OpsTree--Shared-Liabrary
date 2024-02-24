@@ -38,7 +38,7 @@ def call(Map config = [:], String gitLeaksVersion, String depVersion, String jav
     // parallel depCheck: {
     //     depCheck.call(depreport)
     // },
-    bugAnalysis: {
+    parallel bugAnalysis: {
         bugAnalysis.call()
     },
     unitTesting:{
