@@ -13,3 +13,4 @@ def call(String url, String branch){
   gitCheckoutPrivate.call(url, creds, branch)
   installationgo.call()
   gostaticanalysis.call()
+}
