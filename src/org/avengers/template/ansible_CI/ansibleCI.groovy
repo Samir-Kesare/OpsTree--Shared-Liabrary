@@ -5,8 +5,8 @@ import org.avengers.ansible_CI.*
 
 def call(String url, String creds, String branch, String gitleaksVersion, String tagVersion){
   gitCheckoutPrivate = new GitCheckoutPrivate()
-  ansiblelint = new Ansiblelint()
   credentialscan = new Credentialscan()
+  ansiblelint = new Ansiblelint()
   syntaxcheck = new Syntaxcheck()
   gitTag = new gitTag()
 
