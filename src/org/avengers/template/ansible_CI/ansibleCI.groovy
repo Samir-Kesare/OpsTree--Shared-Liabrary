@@ -1,7 +1,7 @@
 package org.avengers.template.ansible_CI
 
 import org.avengers.common.*
-import org.avengers.golang.ansible_CI.*
+import org.avengers.ansible_CI.*
 
 def call(String url, String creds, String branch, String gitleaksVersion, String tagVersion){
   gitCheckoutPrivate = new GitCheckoutPrivate()
