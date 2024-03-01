@@ -1,5 +1,5 @@
 package org.avengers.golang.dast
-def call(String tagVersion ) {
+def call(String tagVersion) {
   stage('Git Tag Stage') {
             script {
                 // Tag the version
