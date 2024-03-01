@@ -8,7 +8,7 @@ def call(String url, String creds, String branch, String gitleaksVersion, String
   ansiblelint = new Ansiblelint()
   credentialscan = new Credentialscan()
   syntaxcheck = new Syntaxcheck()
-  gitTag = new gitTag(tagVersion)
+  gitTag = new gitTag()
 
   gitCheckoutPrivate.call(url, creds, branch)
   ansiblelint.call()
