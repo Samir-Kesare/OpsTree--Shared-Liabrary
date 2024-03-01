@@ -1,5 +1,4 @@
-package org.avengers.golang.dast
-
+package org.avengers.ansible_CI
 def call() {
     stage('Linting Stage') {
        
