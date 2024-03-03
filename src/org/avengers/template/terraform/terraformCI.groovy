@@ -1,20 +1,25 @@
 package org.avengers.template.terraform
 
 import org.avengers.common.*
-
-
+import org.avengers.terraform_CICD.*
 
 def call(String url, String cred, String branch, String rootPath, String childPath, String version) {
 
     gitCheckoutPrivate = new GitCheckoutPrivate()
-    tf = new org.mygurukulam.terraform.Action()
-    lint = new org.avengers.terraform_CICD.linting()
-    cleanup = new org.mygurukulam.common.Cleanup()
+    initialization = new init()
+    formating = new fmt()
+    validation = new validate()
+    linting = new linting()
+    securitychecks = new checkov()
+    cleanWorkspace = new cleanWorkspace()
 
-    cleanup.call()
-    git.call(url, cred, branch)
-    tf.call(rootPath, childPath, "init")
-    tf.call(rootPath, childPath, "validate")
-    tf.call(rootPath, childPath, "plan")
-    lint.call(rootPath, childPath)
+    
+    cleanWorkspace.call()
+    gitCheckoutPrivate.call()
+    initialization.call()
+    formating.call()
+    validation.call()
+    linting.call()
+    securitychecks.call()
+
 }
