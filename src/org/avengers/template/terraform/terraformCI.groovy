@@ -1,7 +1,7 @@
-package org.mygurukulam.template
+package org.avengers.template.terraform
 
-import org.mygurukulam.common.*
-import org.mygurukulam.terraform.*
+import org.avengers.common.*
+
 
 
 def call(String url, String cred, String branch, String rootPath, String childPath, String version) {
@@ -11,7 +11,6 @@ def call(String url, String cred, String branch, String rootPath, String childPa
     def tf = new org.mygurukulam.terraform.Action()
     def staticCode = new org.mygurukulam.terraform.Security()
     def lint = new org.mygurukulam.terraform.Linting()
-    def release = new org.mygurukulam.common.Release()
     def cleanup = new org.mygurukulam.common.Cleanup()
 
     cleanup.call()
@@ -22,5 +21,4 @@ def call(String url, String cred, String branch, String rootPath, String childPa
     tf.call(rootPath, childPath, "plan")
     staticCode.call(rootPath, childPath)
     lint.call(rootPath, childPath)
-    release.call(version, cred)
 }
