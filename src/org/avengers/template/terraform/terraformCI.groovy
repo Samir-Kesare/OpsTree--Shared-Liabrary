@@ -3,7 +3,7 @@ package org.avengers.template.terraform
 import org.avengers.common.*
 import org.avengers.terraform_CICD.*
 
-def call(String url, String cred, String branch, String rootPath, String childPath, String version) {
+def call(String url, String cred, String branch, String rootPath, String childPath) {
 
     gitCheckoutPrivate = new GitCheckoutPrivate()
     initialization = new init()
