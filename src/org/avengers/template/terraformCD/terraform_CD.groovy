@@ -8,7 +8,7 @@ def call(String url, String creds, String branch, String rootPath, String childP
     variablization = new action()
     gitCheckoutPrivate = new GitCheckoutPrivate()
     cleanWorkspace = new cleanWorkspace()
- //   initialization = new init()
+    initialization = new init()
     deploying = new deploy()
     
   
@@ -16,7 +16,7 @@ def call(String url, String creds, String branch, String rootPath, String childP
     cleanWorkspace.call()
     gitCheckoutPrivate.call(url, creds, branch)
     variablization.call(rootPath, childPath)
-  // initialization.call(rootPath, childPath)
+    initialization.call(rootPath, childPath)
     deploying.call(rootPath, childPath) 
 
 }
