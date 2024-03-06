@@ -11,7 +11,7 @@ def call(String rootPath, String childPath) {
            // sh "sudo apt install pipenv -y"
            // sh "pip install checkov"
         //    sh "/var/lib/jenkins/.local/bin/checkov -d . -s"
-            sh "cd ${rootPath}/${childPath} && /var/lib/jenkins/.local/bin/checkov -d . -s --output-file-path checkovreport.json"
+            sh "cd ${rootPath}/${childPath} && /var/lib/jenkins/.local/bin/checkov -d . -s --output-file-path checkovreport.json --skip-path tflint_report.jsonֿ"
         }
     }
 }
