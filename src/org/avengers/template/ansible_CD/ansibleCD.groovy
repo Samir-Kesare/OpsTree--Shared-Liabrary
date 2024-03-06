@@ -3,7 +3,7 @@ package org.avengers.template.ansible_CD
 import org.avengers.common.*
 import org.avengers.ansible_CD.*
 
-def call(String url, String creds, String branch, String gitleaksVersion){
+def call(String url, String creds, String branch, String gitleaksVersion, String path){
   gitCheckoutPrivate = new GitCheckoutPrivate()
   credentialscan = new Credentialscan()
   ansiblelint = new Ansiblelint()
@@ -16,5 +16,5 @@ def call(String url, String creds, String branch, String gitleaksVersion){
   credentialscan.call(gitleaksVersion)
   syntaxcheck.call()
   dryRun.call()
-  ansibleRun.call()
+  ansibleRun.call(path)
 }
