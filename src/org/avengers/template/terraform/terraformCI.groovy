@@ -15,7 +15,7 @@ def call(String url, String cred, String branch, String rootPath, String childPa
     cleanWorkspace = new cleanWorkspace()
 
 
-    variablization.call()
+    variablization.call(rootPath, childPath)
     cleanWorkspace.call()
     gitCheckoutPrivate.call(url, creds, branch)
     initialization.call(rootPath, childPath)
