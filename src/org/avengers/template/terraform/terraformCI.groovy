@@ -13,7 +13,7 @@ def call(String url, String creds, String branch, String rootPath, String childP
     linting = new linting()
     securitychecks = new checkov()
     cleanWorkspace = new cleanWorkspace()
-
+    archiving = new ArchivewithoutClean()
 
     cleanWorkspace.call()
     gitCheckoutPrivate.call(url, creds, branch)
@@ -23,6 +23,8 @@ def call(String url, String creds, String branch, String rootPath, String childP
     validation.call(rootPath, childPath)
     securitychecks.call(rootPath, childPath)
     linting.call(rootPath, childPath)
+    archiving.call
+    archiving.call
     // securitychecks.call(rootPath, childPath)
 
 }
