@@ -8,9 +8,9 @@ def call(String rootPath, String childPath) {
           //  sh 'echo "export PATH=\"`python3 -m site --user-base`/bin:\$PATH\"" >> ~/.bashrc'
            // sh "source ~/.bashrc"
           //  sh 'export PATH="$HOME/.local/bin:$PATH"'
-            sh "sudo apt install pipenv -y"
-            sh "pip install checkov"
-            sh "pipenv run checkov -d ."
+           // sh "sudo apt install pipenv -y"
+           // sh "pip install checkov"
+            sh "/var/lib/jenkins/.local/bin/checkov -d ."
             sh "cd ${rootPath}/${childPath} && checkov --directory . || true"
         }
     }
