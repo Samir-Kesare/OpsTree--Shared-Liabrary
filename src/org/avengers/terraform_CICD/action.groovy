@@ -1,6 +1,6 @@
 package org.avengers.terraform_CICD
 
-def call(String rootPath, String childPath, String action) {
+def call(String rootPath, String childPath) {
     stage("Terraform action") {
         script {
             sh "cd ${rootPath}/${childPath}"
