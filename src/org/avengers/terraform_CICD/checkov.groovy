@@ -4,10 +4,12 @@ def call(String rootPath, String childPath) {
     stage('checkov') {
         script {
             //sh "pip install checkov"
-            sh "python3 -m pip install checkov"
+        //    sh "python3 -m pip install checkov"
           //  sh 'echo "export PATH=\"`python3 -m site --user-base`/bin:\$PATH\"" >> ~/.bashrc'
            // sh "source ~/.bashrc"
-            sh 'export PATH="$HOME/.local/bin:$PATH"'
+          //  sh 'export PATH="$HOME/.local/bin:$PATH"'
+            sh "pipenv run pip install checkov"
+            sh "pipenv run checkov -d ."
             sh "cd ${rootPath}/${childPath} && checkov --directory . || true"
         }
     }
