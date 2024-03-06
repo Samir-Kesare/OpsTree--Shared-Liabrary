@@ -21,7 +21,8 @@ def call(String url, String creds, String branch, String rootPath, String childP
     initialization.call(rootPath, childPath)
     formating.call(rootPath, childPath)
     validation.call(rootPath, childPath)
-    linting.call(rootPath, childPath)
     securitychecks.call(rootPath, childPath)
+    linting.call(rootPath, childPath)
+    // securitychecks.call(rootPath, childPath)
 
 }
