@@ -18,10 +18,10 @@ def call(String url, String cred, String branch, String rootPath, String childPa
     variablization.call()
     cleanWorkspace.call()
     gitCheckoutPrivate.call(url, creds, branch)
-    initialization.call()
-    formating.call()
-    validation.call()
-    linting.call()
-    securitychecks.call()
+    initialization.call(rootPath, childPath)
+    formating.call(rootPath, childPath)
+    validation.call(rootPath, childPath)
+    linting.call(rootPath, childPath)
+    securitychecks.call(rootPath, childPath)
 
 }
