@@ -1,4 +1,4 @@
-package org.avengers.template
+package org.avengers.template.terraform
 
 import org.avengers.common.*
 import org.avengers.terraform_CICD.*
