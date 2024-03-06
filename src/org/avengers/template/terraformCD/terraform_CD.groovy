@@ -3,7 +3,7 @@ package org.avengers.template.terraformCD
 import org.avengers.common.*
 import org.avengers.terraform_CICD.*
 
-def call(String url, String creds, String branch, String rootPath, String childPath, String reportName1, String reportName2){
+def call(String url, String creds, String branch, String rootPath, String childPath){
 
     variablization = new action()
     gitCheckoutPrivate = new GitCheckoutPrivate()
