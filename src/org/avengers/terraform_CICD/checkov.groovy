@@ -10,7 +10,7 @@ def call(String rootPath, String childPath) {
           //  sh 'export PATH="$HOME/.local/bin:$PATH"'
            // sh "sudo apt install pipenv -y"
            // sh "pip install checkov"
-            sh "/var/lib/jenkins/.local/bin/checkov -d ."
+            sh "/var/lib/jenkins/.local/bin/checkov -d . -s"
             sh "cd ${rootPath}/${childPath} && checkov --directory . || true"
         }
     }
