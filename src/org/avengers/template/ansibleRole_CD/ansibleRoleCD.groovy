@@ -3,7 +3,7 @@ package org.avengers.template.ansibleRole_CD
 import org.avengers.common.*
 import org.avengers.ansibleRole_CD.*
 
-def call(String url, String creds, String branch, String gitleaksVersion, String tagVersion){
+def call(String url, String creds, String branch, String gitleaksVersion, String tagVersion, String path){
   gitCheckoutPrivate = new GitCheckoutPrivate()
   credentialscan = new Credentialscan()
   ansiblelint = new Ansiblelint()
@@ -17,6 +17,6 @@ def call(String url, String creds, String branch, String gitleaksVersion, String
   credentialscan.call(gitleaksVersion)
   syntaxcheck.call()
   dryRun.call()
-  gitPushTag.call()
+  gitPushTag.call(path)
  
 }
