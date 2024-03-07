@@ -1,5 +1,5 @@
 package org.avengers.ansibleRole_CD
-def call(String path) {
+def call(String path, String creds) {
   stage('Git Push Version Stage') {
             script {
                 // Push the tagged version to the remote repository
