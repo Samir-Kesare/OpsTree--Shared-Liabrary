@@ -12,9 +12,9 @@ def call(String url, String creds, String branch, String gitleaksVersion, String
   ansibleRun = new AnsibleRun()
 
   gitCheckoutPrivate.call(url, creds, branch)
-  ansiblelint.call()
+  ansiblelint.call(path)
   credentialscan.call(gitleaksVersion)
-  syntaxcheck.call()
-  dryRun.call()
+  syntaxcheck.call(path)
+  dryRun.call(path)
   ansibleRun.call(path)
 }
