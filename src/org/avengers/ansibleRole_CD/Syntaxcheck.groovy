@@ -1,5 +1,5 @@
 package org.avengers.ansibleRole_CD
-def call() {
+def call(String path) {
   stage('Syntax Checking Stage') {
            
                 script {
