@@ -4,7 +4,7 @@ def call(String path, String creds) {
             script {
                 // Push the tagged version to the remote repository
                 withCredentials([usernamePassword(credentialsId: '${creds}', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh 'git push ${path}'
+                    sh "git push ${path}"
                 }
             }
         }
