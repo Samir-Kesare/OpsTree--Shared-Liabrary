@@ -17,6 +17,7 @@ def call(String url, String creds, String branch, String gitleaksVersion, String
   credentialscan.call(gitleaksVersion)
   syntaxcheck.call(path)
   dryRun.call(path)
+  gitTag.call(tagVersion)
   gitPushTag.call(gitpath, creds, tagVersion)
  
 }
