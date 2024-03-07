@@ -3,7 +3,7 @@ def call(String path, String creds) {
   stage('Git Push Version Stage') {
             script {
                 // Push the tagged version to the remote repository
-                withCredentials([usernamePassword(credentialsId: '${creds}', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: "${creds}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh "git push ${path}"
                 }
             }
