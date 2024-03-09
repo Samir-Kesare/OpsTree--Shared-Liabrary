@@ -5,6 +5,7 @@ def call(String path) {
             script {
                 try {
                     // Use Ansible Lint to perform linting on your Ansible playbook
+                    sh 'echo "${path}"'
                     sh 'ansible-lint ${path} -q > lint_report.txt'
                 } catch (Exception e) {
                     // Ignore linting errors
