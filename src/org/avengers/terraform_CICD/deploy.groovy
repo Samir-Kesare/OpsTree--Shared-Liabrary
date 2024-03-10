@@ -7,25 +7,41 @@ def call(String rootPath, String childPath, String ACTION) {
         }
     }
 
-    stage('Want to Perform Terraform Apply') {
-            when {
-                expression { params.ACTION == 'Proceed' }
-            }
-            steps {
-                // Prompt for approval before applying changes
+    // stage('Want to Perform Terraform Apply') {
+    //         when {
+    //             expression { params.ACTION == 'Proceed' }
+    //         }
+    //         steps {
+    //             // Prompt for approval before applying changes
+    //             input "Do you want to apply Terraform changes?"
+    //         }
+    //     }
+        
+    //     stage('Review and Approve Destroy') {
+    //         when {
+    //             expression { params.ACTION == 'Abort' }
+    //         }
+    //         steps {
+    //             // Prompt for approval before destroying resources
+    //             input "Do you want to destroy Terraform resources?"
+    //         }
+    //     }
+
+     stage('Want to Perform Terraform Apply') {
+        script {
+            if (ACTION == 'Proceed') {
                 input "Do you want to apply Terraform changes?"
             }
         }
-        
-        stage('Review and Approve Destroy') {
-            when {
-                expression { params.ACTION == 'Abort' }
-            }
-            steps {
-                // Prompt for approval before destroying resources
+    }
+    
+    stage('Review and Approve Destroy') {
+        script {
+            if (ACTION == 'Abort') {
                 input "Do you want to destroy Terraform resources?"
             }
         }
+    }
 
     stage('Proceed or Abort') {
             steps {
