@@ -8,7 +8,7 @@ def call(String gitleaksVersion) {
                 sh "tar xvzf gitleaks_${gitleaksVersion}_linux_x64.tar.gz"
                 sh "./gitleaks detect -r credScanReport.json"
               }
-              catch {
+              catch (Exception e)  {
               sh ' echo " Please check the cred scan report " '
               }
               
