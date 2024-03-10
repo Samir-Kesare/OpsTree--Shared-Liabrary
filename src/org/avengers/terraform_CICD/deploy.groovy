@@ -3,7 +3,7 @@ package org.avengers.terraform_CICD
 def call(String rootPath, String childPath, String ACTION) {
     stage("Terraform Plan") {
         script {
-            sh "cd ${rootPath}/${childPath} && terraform plan"
+            sh "cd ${rootPath}/${childPath} && terraform plan -out=tfplan.out"
         }
     }
 
@@ -47,7 +47,7 @@ def call(String rootPath, String childPath, String ACTION) {
            // steps {
                 script {
                     if (params.ACTION == 'Proceed') {
-                        sh 'terraform apply -auto-approve'
+                        sh 'terraform apply -out=tfplan.out -auto-approve'
                     } else if (params.ACTION == 'Abort') {
                          echo 'Failed!'
                     }
