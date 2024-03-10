@@ -44,7 +44,7 @@ def call(String rootPath, String childPath, String ACTION) {
     }
 
     stage('Proceed or Abort') {
-            steps {
+           // steps {
                 script {
                     if (params.ACTION == 'Proceed') {
                         sh 'terraform apply -auto-approve'
@@ -52,7 +52,7 @@ def call(String rootPath, String childPath, String ACTION) {
                          echo 'Failed!'
                     }
                 }
-            }
+          //  }
         }
     }
 
