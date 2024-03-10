@@ -47,7 +47,7 @@ def call(String rootPath, String childPath, String ACTION) {
            // steps {
                 script {
                     if (params.ACTION == 'Proceed') {
-                        sh 'terraform apply -out=tfplan.out -auto-approve'
+                        sh 'terraform apply "tfplan.out" -auto-approve'
                     } else if (params.ACTION == 'Abort') {
                          echo 'Failed!'
                     }
