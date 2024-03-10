@@ -64,39 +64,16 @@ def call(String rootPath, String childPath, String ACTION) {
 //}
 
         stage('Approval For Apply') {
-            when {
-                expression { params.ACTION == 'apply' }
-            }
             steps {
                 // Prompt for approval before applying changes
                 input "Do you want to apply Terraform changes?"
             }
         }
         stage('Terraform Apply') {
-            when {
-                expression { params.ACTION == 'apply' }
-            }
             steps {
                 // Run Terraform apply
                 sh 'terraform apply -auto-approve'
             }
         }
-        stage('Approval for Destroy') {
-            when {
-                expression { params.ACTION == 'destroy' }
-            }
-            steps {
-                // Prompt for approval before destroying resources
-                input "Do you want to Terraform Destroy?"
-            }
-        }
-        stage('Terraform Destroy') {
-            when {
-                expression { params.ACTION == 'destroy' }
-            }
-            steps {
-                // Destroy Infra
-                sh 'terraform destroy -auto-approve'
-            }
-        }
+       
    }
