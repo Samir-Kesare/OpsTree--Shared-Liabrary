@@ -18,7 +18,7 @@
 package org.avengers.terraform_CICD
 
 def call(String rootPath, String childPath, String ACTION) {
-    stage('Approval For Apply') {
+    stage('Approval For Destroy') {
         script {
             if (ACTION == 'destroy') {
                 input "Do you want to Destroy Terraform Infrastructure?"
