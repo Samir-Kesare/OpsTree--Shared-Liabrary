@@ -29,7 +29,7 @@ def call(String rootPath, String childPath, String ACTION) {
     if (ACTION == 'destroy') {
         stage('Terraform destroy') {
             script {
-                sh "cd ${rootPath}/${childPath} && terraform destroy --auto approve"
+                sh "cd ${rootPath}/${childPath} && terraform destroy -auto-approve"
             }
         }
     }
