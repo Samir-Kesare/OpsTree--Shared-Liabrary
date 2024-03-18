@@ -17,6 +17,6 @@ def call(String url, String creds, String branch, String rootPath, String childP
     variablization.call(rootPath, childPath)
     initialization.call(rootPath, childPath)
     deploying.call(rootPath, childPath, ACTION)
-    keyarchive.call()
+    keyarchive.call(rootPath, childPath)
 
 }
