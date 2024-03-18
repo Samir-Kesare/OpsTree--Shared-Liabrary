@@ -9,6 +9,7 @@ def call(String url, String creds, String branch, String rootPath, String childP
     gitCheckoutPrivate = new GitCheckoutPrivate()
     initialization = new init()
     deploying = new deploy()
+    destroy = new destroy()
     keyarchive = new keyarchive()
     
   
@@ -17,6 +18,7 @@ def call(String url, String creds, String branch, String rootPath, String childP
     variablization.call(rootPath, childPath)
     initialization.call(rootPath, childPath)
     deploying.call(rootPath, childPath, ACTION)
+    destroy.call(rootPath, childPath, ACTION)
     keyarchive.call(rootPath, childPath)
 
 }
