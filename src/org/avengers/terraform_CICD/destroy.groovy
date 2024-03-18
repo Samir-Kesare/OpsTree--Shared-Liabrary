@@ -1,17 +1,38 @@
+// package org.avengers.terraform_CICD
+
+// def call(String rootPath, String childPath) {
+  
+//   stage('Approval For Apply') {
+//             script {
+//                 // Prompt for approval before applying changes
+//                 input "Do you want to Destroy Terraform Infrastructure?"
+//             }
+//         }  
+  
+//   stage('Terraform destroy') {
+//         script {
+//             sh "cd ${rootPath}/${childPath} && terraform destroy"
+//         }
+//     }
+// }
 package org.avengers.terraform_CICD
 
-def call(String rootPath, String childPath) {
-  
-  stage('Approval For Apply') {
-            script {
-                // Prompt for approval before applying changes
-                input "Do you want to Destroy Terraform Infrastructure?"
-            }
-        }  
-  
-  stage('Terraform destroy') {
+def call(String rootPath, String childPath, String ACTION) {
+    stage('Approval For Apply') {
         script {
-            sh "cd ${rootPath}/${childPath} && terraform destroy"
+            if (ACTION == 'destroy') {
+                input "Do you want to Destroy Terraform Infrastructure?"
+            } else {
+                echo "Skipping Terraform destroy since action is not set to 'destroy'"
+            }
+        }
+    }
+
+    if (ACTION == 'destroy') {
+        stage('Terraform destroy') {
+            script {
+                sh "cd ${rootPath}/${childPath} && terraform destroy"
+            }
         }
     }
 }
