@@ -22,8 +22,6 @@ def call(String rootPath, String childPath, String ACTION) {
         script {
             if (ACTION == 'destroy') {
                 input "Do you want to Destroy Terraform Infrastructure?"
-            } else {
-                echo "Skipping Terraform destroy since action is not set to 'destroy'"
             }
         }
     }
