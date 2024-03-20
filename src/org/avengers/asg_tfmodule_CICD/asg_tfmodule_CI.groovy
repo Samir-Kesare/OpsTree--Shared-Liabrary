@@ -52,9 +52,15 @@ def call(String rootPath, String childPath, String tagVersion) {
             sh "cd ${rootPath}/${childPath} && /var/lib/jenkins/.local/bin/checkov -d . -s --output-file-path . --skip-path ./tflint_report.jsonֿ"
         }
     }
+    stage('Archive') {
+        script {
+           archiveArtifacts artifacts: "**/${reportName}"
+        }
+    }
+  
+}
 
-    
-    stage('Git Tag Stage') {
+   stage('Git Tag Stage') {
         script {
             // Tag the version
             sh "git tag -a v${tagVersion} -m 'Version ${tagVersion}'"
