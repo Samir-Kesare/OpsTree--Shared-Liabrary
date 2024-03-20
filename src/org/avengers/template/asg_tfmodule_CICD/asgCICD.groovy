@@ -8,11 +8,9 @@ def call(String url, String creds, String branch, String rootPath, String childP
 
     
     gitCheckoutPrivate = new GitCheckoutPrivate()
-    cleanWorkspace = new cleanWorkspace()
     archiving = new ArchivewithoutClean()
     asg_tfmodule_CI = new asg_tfmodule_CI()
 
-    cleanWorkspace.call()
     gitCheckoutPrivate.call(url, creds, branch)
     asg_tfmodule_CI.call(rootPath, childPath, tagVersion)
     archiving.call(reportName1)
