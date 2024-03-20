@@ -15,7 +15,7 @@ def call(String rootPath, String childPath, String tagVersion) {
     stage('Terraform fmt') {
         script {
             // Stage to format Terraform files
-            sh "cd ${rootPath}/${childPath} && terraform fmt"
+            sh "cd ${rootPath}/${childPath} && sudo terraform fmt"
         }
     }
     stage('Terraform Validate') {
