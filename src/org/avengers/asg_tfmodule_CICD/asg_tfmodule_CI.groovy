@@ -36,10 +36,10 @@ def call(String rootPath, String childPath, String tagVersion) {
         script {
 
             // Check if Checkov is installed
-           def checkovInstalled = sh(script: 'command -v checkov >/dev/null 2>&1', returnStatus: true)
+           def checkovInstalled = sh(script: 'test -x /var/lib/jenkins/.local/bin/checkov && echo "Installed"', returnStatus: true)
             if (checkovInstalled == 0) {
-                echo "Checkov is already installed."
-            } else {
+               echo "Checkov is already installed."
+           } else {
                 echo "Checkov is not installed. Installing..."
                 sh "pip install checkov"
                 sh "python3 -m pip install checkov"
