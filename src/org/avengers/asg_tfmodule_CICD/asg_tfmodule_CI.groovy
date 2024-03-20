@@ -62,4 +62,11 @@ def call(String rootPath, String childPath) {
         }
     }
 }
-
+def call(String tagVersion) {
+  stage('Git Tag Stage') {
+            script {
+                // Tag the version
+                sh "git tag -a v${tagVersion} -m 'Version ${tagVersion}'"
+            }
+        }
+}
