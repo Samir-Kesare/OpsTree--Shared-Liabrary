@@ -21,7 +21,7 @@ def call(String rootPath, String childPath, String tagVersion) {
     stage('Terraform Validate') {
         script {
             // Validate Terraform configurations
-            sh "cd ${rootPath}/${childPath} && terraform validate"
+            sh "cd ${rootPath}/${childPath} && sudo terraform validate"
         }
     }
       stage('Static Code Analysis') {
