@@ -20,8 +20,6 @@ def call(String rootPath, String childPath, String tagVersion) {
                 sh "pip install checkov"
                 sh "python3 -m pip install checkov"
                 sh 'echo "export PATH=\"`python3 -m site --user-base`/bin:\$PATH\"" >> ~/.bashrc'
-                
-                
                 sh "sudo apt install pipenv -y"
                 sh "pip install checkov"
                 
@@ -38,12 +36,6 @@ def call(String rootPath, String childPath, String tagVersion) {
         }
     }
 
-    stage("Pem Key Archive") {
-        script {
-            // Archive PEM key artifacts
-            archiveArtifacts artifacts: "${rootPath}/${childPath}/*.pem", allowEmptyArchive: true
-        }
-    }
 
     stage('Static Code Analysis') {
         script {
