@@ -1,7 +1,8 @@
-package org.avengers.template.terraformCI
+package org.avengers.template.asg_tfmodule_CICD
+
 
 import org.avengers.common.*
-import org.avengers.terraform_CICD.*
+import org.avengers.asg_tfmodule_CICD.*
 
 def call(String url, String creds, String branch, String rootPath, String childPath, String reportName1, String reportName2){
 
