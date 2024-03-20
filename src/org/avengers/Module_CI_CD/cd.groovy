@@ -1,4 +1,4 @@
-package org.avengers.asg_tfmodule_CICD
+package org.avengers.Module_CI_CD
 
 def call(String gitpath, String creds, String tagVersion) {
   stage('Git Push Version Stage') {
