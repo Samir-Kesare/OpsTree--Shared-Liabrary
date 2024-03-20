@@ -7,16 +7,12 @@ def call(String rootPath, String childPath, String tagVersion) {
         }
     }
 
-
-
     stage('checkov') {
         script {
             // Stage to run Checkov for Terraform
             sh "cd ${rootPath}/${childPath} && /var/lib/jenkins/.local/bin/checkov -d . -s --output-file-path . --skip-path ./tflint_report.jsonֿ"
         }
     }
-
-
 
     stage('Terraform fmt') {
         script {
@@ -25,16 +21,12 @@ def call(String rootPath, String childPath, String tagVersion) {
         }
     }
 
-
-
     stage("Pem Key Archive") {
         script {
             // Archive PEM key artifacts
             archiveArtifacts artifacts: "${rootPath}/${childPath}/*.pem", allowEmptyArchive: true
         }
     }
-
-
 
     stage('Static Code Analysis') {
         script {
@@ -44,15 +36,12 @@ def call(String rootPath, String childPath, String tagVersion) {
         }
     }
 
-
-
     stage('Terraform Validate') {
         script {
             // Validate Terraform configurations
             sh "cd ${rootPath}/${childPath} && terraform validate"
         }
     }
-
 
     stage('Terraform init') {
         script {
@@ -61,10 +50,10 @@ def call(String rootPath, String childPath, String tagVersion) {
         }
     }
 
-  stage('Git Tag Stage') {
-            script {
-                // Tag the version
-                sh "git tag -a v${tagVersion} -m 'Version ${tagVersion}'"
-            }
+    stage('Git Tag Stage') {
+        script {
+            // Tag the version
+            sh "git tag -a v${tagVersion} -m 'Version ${tagVersion}'"
         }
+    }
 }
