@@ -1,4 +1,4 @@
-package org.avengers.template.asg_tfmodule_CICD
+package org.avengers.template.Module_CI_CD
 
 
 import org.avengers.common.*
