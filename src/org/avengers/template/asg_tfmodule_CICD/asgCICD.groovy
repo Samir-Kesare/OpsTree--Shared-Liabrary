@@ -9,10 +9,10 @@ def call(String url, String creds, String branch, String rootPath, String childP
     
     gitCheckoutPrivate = new GitCheckoutPrivate()
     asg_tfmodule_CI = new asg_tfmodule_CI()
-    ArchivewithoutClean = new ArchivewithoutClean()
+    archivewithoutClean = new ArchivewithoutClean()
     
     gitCheckoutPrivate.call(url, creds, branch)
     asg_tfmodule_CI.call(rootPath, childPath, tagVersion)
-    ArchivewithoutClean.call(reportName1)
-    ArchivewithoutClean.call(reportName2)
+    archivewithoutClean.call(reportName1)
+    archivewithoutClean.call(reportName2)
 }
