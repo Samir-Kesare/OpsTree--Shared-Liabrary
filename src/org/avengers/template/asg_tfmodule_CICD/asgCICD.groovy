@@ -4,7 +4,7 @@ package org.avengers.template.asg_tfmodule_CICD
 import org.avengers.common.*
 import org.avengers.asg_tfmodule_CICD.*
 
-def call(String url, String creds, String branch, String rootPath, String childPath, String tagVersion, String reportName1, String reportName1){
+def call(String url, String creds, String branch, String rootPath, String childPath, String tagVersion, String reportName1, String reportName2){
 
     
     gitCheckoutPrivate = new GitCheckoutPrivate()
