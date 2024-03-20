@@ -6,24 +6,15 @@ import org.avengers.asg_tfmodule_CICD.*
 
 def call(String url, String creds, String branch, String rootPath, String childPath, String reportName1, String reportName2){
 
-    variablization = new action()
+    
     gitCheckoutPrivate = new GitCheckoutPrivate()
-    initialization = new init()
-    formating = new fmt()
-    validation = new validate()
-    linting = new linting()
-    securitychecks = new checkov()
     cleanWorkspace = new cleanWorkspace()
     archiving = new ArchivewithoutClean()
+    asg_tfmodule_CI = new asg_tfmodule_CI()
 
     cleanWorkspace.call()
     gitCheckoutPrivate.call(url, creds, branch)
-    variablization.call(rootPath, childPath)
-    initialization.call(rootPath, childPath)
-    formating.call(rootPath, childPath)
-    validation.call(rootPath, childPath)
-    securitychecks.call(rootPath, childPath)
-    linting.call(rootPath, childPath)
+    asg_tfmodule_CI.call(rootPath, childPath, tagVersion)
     archiving.call(reportName1)
     archiving.call(reportName2)
     // securitychecks.call(rootPath, childPath)
