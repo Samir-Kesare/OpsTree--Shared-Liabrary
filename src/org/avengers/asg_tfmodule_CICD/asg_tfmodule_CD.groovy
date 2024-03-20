@@ -1,26 +1,12 @@
 package org.avengers.asg_tfmodule_CICD
 
-def call(String rootPath, String childPath, String ACTION) {
-    stage("Terraform Plan") {
-        script {
-            sh "cd ${rootPath}/${childPath} && terraform plan"
-        }
-    }
-
-    if (ACTION == 'apply') {
-        stage('Approval For Apply') {
+def call(String gitpath, String creds, String tagVersion) {
+  stage('Git Push Version Stage') {
             script {
-                // Prompt for approval before applying changes
-                input "Do you want to apply Terraform changes?"
+                // Push the tagged version to the remote repository
+                withCredentials([usernamePassword(credentialsId: "${creds}", usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh "git push https://username:${PASSWORD}@github.com/${gitpath} v${tagVersion}"
+                }
             }
         }
-        stage('Terraform Apply') {
-            script {
-                // Run Terraform apply
-                sh 'cd ${rootPath}/${childPath} && terraform apply -auto-approve'
-            }
-        }
-    } else {
-        echo "Skipping Terraform apply since action is not set to 'apply'"
-    }
 }
