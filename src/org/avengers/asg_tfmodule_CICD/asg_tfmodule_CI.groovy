@@ -1,4 +1,4 @@
-package org.avengers.terraform_CICD
+package org.avengers.asg_tfmodule_CICD
 
 def call(String rootPath, String childPath) {
     stage("Terraform action") {
