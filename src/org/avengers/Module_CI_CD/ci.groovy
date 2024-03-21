@@ -18,12 +18,12 @@ def call(String rootPath, String childPath, String tagVersion) {
             sh "cd ${rootPath}/${childPath} && sudo terraform fmt"
         }
     }
-    // stage('Terraform Validate') {
-    //     script {
-    //         // Validate Terraform configurations
-    //         sh "cd ${rootPath}/${childPath} && sudo terraform validate"
-    //     }
-    // }
+    stage('Terraform Validate') {
+        script {
+            // Validate Terraform configurations
+            sh "cd ${rootPath}/${childPath} && sudo terraform validate"
+        }
+    }
       stage('Static Code Analysis') {
         script {
             // Install TFLint and run static code analysis
@@ -52,11 +52,11 @@ def call(String rootPath, String childPath, String tagVersion) {
             sh "cd ${rootPath}/${childPath} && /var/lib/jenkins/.local/bin/checkov -d . -s --output-file-path . --skip-path ./tflint_report.jsonֿ"
         }
     }
-    stage("Terraform Plan") {
-        script {
-            sh "cd ${rootPath}/${childPath} && terraform plan"
-        }
-    }
+    // stage("Terraform Plan") {
+    //     script {
+    //         sh "cd ${rootPath}/${childPath} && terraform plan"
+    //     }
+    // }
     
    stage('Git Tag Stage') {
         script {
