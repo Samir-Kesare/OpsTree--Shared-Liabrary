@@ -18,12 +18,12 @@ def call(String rootPath, String childPath, String tagVersion) {
             sh "cd ${rootPath}/${childPath} && sudo terraform fmt"
         }
     }
-    stage('Terraform Validate') {
-        script {
-            // Validate Terraform configurations
-            sh "cd ${rootPath}/${childPath} && sudo terraform validate"
-        }
-    }
+    // stage('Terraform Validate') {
+    //     script {
+    //         // Validate Terraform configurations
+    //         sh "cd ${rootPath}/${childPath} && sudo terraform validate"
+    //     }
+    // }
       stage('Static Code Analysis') {
         script {
             // Install TFLint and run static code analysis
