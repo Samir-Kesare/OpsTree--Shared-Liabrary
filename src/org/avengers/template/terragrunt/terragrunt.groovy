@@ -2,7 +2,7 @@ package org.avengers.template.terragrunt
 
 def terragruntInit() {
     stage('Terragrunt Init') {
-        // Perform dp check
+
         sh 'terragrunt init'
     }
 }
