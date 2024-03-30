@@ -13,16 +13,12 @@ def call(String url, String creds, String branch, String rootPath, String childP
     utils.plan(rootPath, childPath)
 
 
-    // Pipeline approval
-    input(message: 'Proceed with applying or destroying infrastructure?', parameters: [choice(name: 'action', choices: ['Apply', 'Destroy'], description: 'Select action')])
-
-    // Conditional block based on user's choice
-    if (params.action == 'Apply') {
+    if (action == 'Apply') {
         utils.apply(rootPath, childPath)
-    } else if (params.action == 'Destroy') {
+    } else if (action == 'Destroy') {
         utils.destroy(rootPath, childPath)
     } else {
-        error('Invalid action selected.')
+        error("Invalid action specified: ${action}")
     }
 
 }
