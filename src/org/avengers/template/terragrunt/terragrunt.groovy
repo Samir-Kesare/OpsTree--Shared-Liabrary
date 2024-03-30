@@ -12,12 +12,6 @@ def call(String url, String creds, String branch, String rootPath, String childP
 
     
     gitCheckoutPrivate.call(url, creds, branch)
- 
-    if (executeDestroy == 'Yes') {
-        utils.destroy(rootPath, childPath)
-    } else (executeDestroy == 'No') {
-        error("Invalid action specified: ${action}")
-    }
 
     if (action == 'apply') {
         utils.init(rootPath, childPath)
