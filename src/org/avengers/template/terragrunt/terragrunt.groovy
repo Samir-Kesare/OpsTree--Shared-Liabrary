@@ -3,7 +3,7 @@ package org.avengers.template.terragrunt
 import org.avengers.common.*
 import org.avengers.terragrunt.TerragruntUtils
 
-def call(String url, String creds, String branch, String rootPath, String childPath, String action) {
+def call(String url, String creds, String branch, String rootPath, String childPath, String executeDestroy) {
     def utils = new TerragruntUtils()
     gitCheckoutPrivate = new GitCheckoutPrivate()
 
@@ -13,9 +13,9 @@ def call(String url, String creds, String branch, String rootPath, String childP
     utils.plan(rootPath, childPath)
     utils.apply(rootPath, childPath)
 
-    if (action == 'Yes') {
+    if (executeDestroy == 'Yes') {
         utils.destroy(rootPath, childPath)
-    } else (action == 'No') {
+    } else (executeDestroy == 'No') {
         error("Invalid action specified: ${action}")
 
 }
