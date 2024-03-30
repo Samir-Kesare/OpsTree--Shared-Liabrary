@@ -17,3 +17,9 @@ def apply(String rootPath, String childPath) {
         sh "cd ${rootPath}/${childPath} && terragrunt apply -auto-approve"
     }
 }
+
+def destroy(String rootPath, String childPath) {
+    stage('Terragrunt Apply') {
+        sh "cd ${rootPath}/${childPath} && terragrunt destroy -auto-approve"
+    }
+}
