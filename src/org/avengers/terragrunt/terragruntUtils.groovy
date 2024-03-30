@@ -1,10 +1,21 @@
-package org.avengers.java.dast
+package org.avengers.terragrunt
 
-def call() {
-stage('Run ZAP Scan') {
-            script {
-                 // Start ZAP and perform the scan
-                  sh "${currentWorkspace}/ZAP_${zapVersion}/zap.sh -cmd -port 8082 -quickurl http://174.129.170.198:8080/swagger-ui/index.html -quickout ${currentWorkspace}/results.html"
-                }
-            }
+class TerragruntUtils {
+    def init() {
+        stage('Terragrunt Init') {
+            sh 'terragrunt init'
+        }
+    }
+
+    def plan() {
+        stage('Terragrunt Plan') {
+            sh 'Terragrunt plan'
+        }
+    }
+
+    def apply() {
+        stage('Terragrunt Apply') {
+            sh 'terragrunt apply'
+        }
+    }
 }
