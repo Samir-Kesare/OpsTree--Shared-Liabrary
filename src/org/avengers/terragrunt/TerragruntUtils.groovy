@@ -1,6 +1,6 @@
 package org.avengers.terragrunt
 
-class terragruntUtils {
+class TerragruntUtils {
     def init(String rootPath, String childPath) {
         stage('Terragrunt Init') {
             sh 'cd ${rootPath}/${childPath} && terragrunt init'
