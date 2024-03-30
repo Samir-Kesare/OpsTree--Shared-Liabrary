@@ -1,21 +1,21 @@
 package org.avengers.terragrunt
 
 class TerragruntUtils {
-    def init() {
+    def init(String rootPath, String childPath) {
         stage('Terragrunt Init') {
-            sh 'terragrunt init'
+            sh 'cd ${rootPath}/${childPath} && terragrunt init'
         }
     }
 
-    def plan() {
+    def plan(String rootPath, String childPath) {
         stage('Terragrunt Plan') {
-            sh 'Terragrunt plan'
+            sh 'cd ${rootPath}/${childPath} && terragrunt plan'
         }
     }
 
-    def apply() {
+    def apply(String rootPath, String childPath) {
         stage('Terragrunt Apply') {
-            sh 'terragrunt apply'
+            sh 'cd ${rootPath}/${childPath} && terragrunt apply'
         }
     }
 }
