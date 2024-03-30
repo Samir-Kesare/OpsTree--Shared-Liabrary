@@ -19,7 +19,7 @@ def apply(String rootPath, String childPath) {
 }
 
 def destroy(String rootPath, String childPath) {
-    stage('Terragrunt Apply') {
+    stage('Terragrunt Destroy') {
         sh "cd ${rootPath}/${childPath} && terragrunt destroy -auto-approve"
     }
 }
