@@ -12,4 +12,5 @@ def call(String url, String creds, String branch, String rootPath, String childP
     utils.init(rootPath, childPath)
     utils.plan(rootPath, childPath)
     utils.apply(rootPath, childPath)
+    utils.destroy(rootPath, childPath)
 }
