@@ -1,20 +1,11 @@
 package org.avengers.template.terragrunt
 
-def terragruntInit() {
-    stage('Terragrunt Init') {
+import org.avengers.terragrunt.terragruntUtils
 
-        sh 'terragrunt init'
-    }
-}
+def call() {
+    def utils = new terragruntUtils()
 
-def terragruntPlan() {
-    stage('Terragrunt Plan') {
-        sh 'terragrunt plan'
-    }
-}
-
-def terragruntApply() {
-    stage('Terragrunt Apply') {
-        sh 'terragrunt apply --auto-approve'
-    }
+    utils.init()
+    utils.plan()
+    utils.apply()
 }
