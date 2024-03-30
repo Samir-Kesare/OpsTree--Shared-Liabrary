@@ -16,6 +16,6 @@ def call(String url, String creds, String branch, String rootPath, String childP
     if (executeDestroy) {
         utils.destroy(rootPath, childPath)
     } else {
-        echo 'Skipping destroy stage as requested.'
+        echo "Skipping destroy stage as requested."
     }
 }
