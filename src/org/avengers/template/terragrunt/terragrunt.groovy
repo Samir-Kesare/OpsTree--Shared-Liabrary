@@ -11,14 +11,11 @@ def call(String url, String creds, String branch, String rootPath, String childP
     
     utils.init(rootPath, childPath)
     utils.plan(rootPath, childPath)
+    utils.apply(rootPath, childPath)
 
-
-    if (action == 'Apply') {
-        utils.apply(rootPath, childPath)
-    } else if (action == 'Destroy') {
+    if (action == 'Yes') {
         utils.destroy(rootPath, childPath)
-    } else {
+    } else (action == 'No') {
         error("Invalid action specified: ${action}")
-    }
 
 }
