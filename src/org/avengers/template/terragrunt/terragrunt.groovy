@@ -17,5 +17,6 @@ def call(String url, String creds, String branch, String rootPath, String childP
         utils.destroy(rootPath, childPath)
     } else (executeDestroy == 'No') {
         error("Invalid action specified: ${action}")
+    }
 
 }
