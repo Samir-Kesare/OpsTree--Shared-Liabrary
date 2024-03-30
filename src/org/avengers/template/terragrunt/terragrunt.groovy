@@ -6,7 +6,9 @@ import org.avengers.terragrunt.TerragruntUtils
 def call(String url, String creds, String branch, String rootPath, String childPath, String executeDestroy) {
     def utils = new TerragruntUtils()
     gitCheckoutPrivate = new GitCheckoutPrivate()
-
+    // approval = new approval()
+    
+    // approval.call
     gitCheckoutPrivate.call(url, creds, branch)
     
     utils.init(rootPath, childPath)
