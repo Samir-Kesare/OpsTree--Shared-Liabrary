@@ -11,12 +11,12 @@ def call(String url, String creds, String branch, String rootPath, String childP
     def destroyMsg = 'Do you want to destroy the changes ?'
     gitCheckoutPrivate.call(url, creds, branch)
     
-    if (action == 'Apply') {
+    if (action == 'apply') {
         utils.init(rootPath, childPath)
         utils.plan(rootPath, childPath)
         approval.call(applyMsg)        
         utils.apply(rootPath, childPath)
-    } else if (action == 'Destroy') {
+    } else if (action == 'destroy') {
         approval.call(destroyMsg)
         utils.destroy(rootPath, childPath)
     } else {
