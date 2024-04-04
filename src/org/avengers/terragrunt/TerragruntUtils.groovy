@@ -2,7 +2,7 @@ package org.avengers.terragrunt
 
 def init(String rootPath, String childPath) {
     stage('Terragrunt Init') {
-        sh "terragrunt init"
+        sh "cd ${rootPath}/${childPath} && terragrunt init"
     }
 }
 
