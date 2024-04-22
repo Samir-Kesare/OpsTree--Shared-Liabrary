@@ -26,13 +26,15 @@ def destroy(String rootPath, String greenPath) {
 }
 
 def healthCheck(String rootPath, String greenPath) {
-        stage('TG Health Check'){
-                    def green_tg_arn = sh(
-                        returnStdout: true,
-                        script: "cd ${rootPath}/${greenPath} && terragrunt output final_target_group_arn").trim()
-                    env.GREEN_TG_ARN = green_tg_arn
-                    }
-    
+        stage('Store TG arn'){
+            def green_tg_arn = sh(
+                returnStdout: true,
+                script: "cd ${rootPath}/${greenPath} && terragrunt output final_target_group_arn").trim()
+                env.GREEN_TG_ARN = green_tg_arn
+        }
+        stage('TG Health Check') {
+            sh "aws elbv2 describe-target-health --target-group-arn ${env.GREEN_TG_ARN} | grep State"
+        }
 }
 def deployGreen(String rootPath, String greenPath) {
     stage('Deploy Green') {
