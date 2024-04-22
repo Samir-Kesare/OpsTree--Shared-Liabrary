@@ -1,4 +1,4 @@
-package org.avengers.docker.createImage
+package org.avengers.docker.CD
 
 def call(String imageName, String dockerfilePath) {
   
