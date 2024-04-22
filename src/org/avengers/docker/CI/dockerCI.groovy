@@ -15,7 +15,7 @@ def createImage(String imageName, String dockerfilePath) {
 def trivyCheck(String imageName) {
     stage('trivy Scan'){
     sh """
-       trivy -q ${imageName}:latest
+       trivy image -q ${imageName}:latest
     """    
   }
 }
