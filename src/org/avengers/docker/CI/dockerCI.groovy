@@ -1,4 +1,4 @@
-package org.avengers.docker_CI
+package org.avengers.docker.CI
 
 def createImage(String imageName, String dockerfilePath) {
   
