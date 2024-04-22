@@ -28,7 +28,7 @@ def healthCheck(String rootPath, String childPath) {
         stage('TG Health Check'){
                     def green_tg_arn = sh(
                         returnStdout: true,
-                        script: 'cd ${rootPath}/${childPath} && terragrunt output final_target_group_arn').trim()
+                        script: "cd ${rootPath}/${childPath} && terragrunt output final_target_group_arn").trim()
                     env.GREEN_TG_ARN = green_tg_arn
                     }
         stage('Print DNS Name'){
