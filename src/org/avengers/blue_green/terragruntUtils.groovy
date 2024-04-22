@@ -2,13 +2,13 @@ package org.avengers.blue_green
 
 def init(String rootPath, String childPath) {
     stage('Terragrunt Init') {
-        sh "cd ${rootPath}/${childPath} && terragrunt run-all init"
+        sh "cd ${rootPath}/${childPath} && terragrunt run-all --terragrunt-non-interactive  init"
     }
 }
 
 def plan(String rootPath, String childPath, String extraVars) {
     stage('Terragrunt Plan') {
-        sh "cd ${rootPath}/${childPath} && terragrunt plan ${extraVars}"
+        sh "cd ${rootPath}/${childPath} && terragrunt plan  --terragrunt-disable-command-validation  ${extraVars}"
     }
 }
 
