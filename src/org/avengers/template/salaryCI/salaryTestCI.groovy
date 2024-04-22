@@ -14,7 +14,7 @@ def call(Map config = [:], String gitLeaksVersion, String reportName, String org
     def  scan = new Scan()
     def javaCompile = new compile()
     def sonarCloud = new sonarCloud()
-    def trivy = new dockerCI()
+    def dockerCI = new dockerCI()
     // def cleanWorkspace = new cleanWorkspace()
     // cleanAfterArchive = new CleanAfterArchive()
     
@@ -24,7 +24,8 @@ def call(Map config = [:], String gitLeaksVersion, String reportName, String org
     scan.call(reportName)
     javaCompile.call()
     sonarCloud.call(organization, projectKey)
-    trivy.createImage(imageName, dockerfilePath)
+    dockerCI.createImage(imageName, dockerfilePath)
+    dockerCI.trivyCheck(imageName)
     }
     catch (e){
         echo 'Salary CI Failed'
