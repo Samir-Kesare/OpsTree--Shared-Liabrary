@@ -12,9 +12,9 @@ def plan(String rootPath, String childPath) {
     }
 }
 
-def apply(String rootPath, String childPath) {
+def apply(String rootPath, String childPath, String extraVars) {
     stage('Terragrunt Apply') {
-        sh "cd ${rootPath}/${childPath} && terragrunt apply -auto-approve"
+        sh "cd ${rootPath}/${childPath} && terragrunt apply -auto-approve ${extraVars}"
     }
 }
 
