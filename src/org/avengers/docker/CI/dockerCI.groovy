@@ -41,7 +41,7 @@ def trivyCheck() {
     export source_key=trivy
     export report_file_path=null
     export base64EncodedResponse=`base64 mi.csv`
-    envsubst mi.template trivy.mi
+    envsubst < mi.template > trivy.mi
     cat trivy.mi
     curl -d "@${trivy.mi}" -X POST  -H "Content-Type: application/json" http://34.131.67.101/api/v1/default/maturity_metrices/
     '''
