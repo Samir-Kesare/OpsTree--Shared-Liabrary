@@ -6,13 +6,13 @@ import org.avengers.common.*
 import org.avengers.java.staticCodeAnalysis.*
 
 
-def call(Map config = [:], String gitLeaksVersion, String reportName){
+def call(Map config = [:], String gitLeaksVersion, String reportName, String organization, String projectKey){
     
     def gitCheckout = new gitCheckout()
     def gitLeaks = new GitLeaks()
     def  scan = new Scan()
     // def javaCompile = new compile()
-    def staticCodeAnalysis = new staticCodeAnalysis()
+    def sonarCloud = new sonarCloud()
     // def cleanWorkspace = new cleanWorkspace()
     // cleanAfterArchive = new CleanAfterArchive()
     
@@ -21,7 +21,7 @@ def call(Map config = [:], String gitLeaksVersion, String reportName){
     gitLeaks.call(gitLeaksVersion)
     scan.call(reportName)
     // javaCompile.call()
-    staticCodeAnalysis.call()        
+    sonarCloud.call(organization, projectKey)        
     }
     catch (e){
         echo 'Salary CI Failed'
