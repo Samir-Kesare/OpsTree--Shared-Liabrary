@@ -13,16 +13,16 @@ def call(String url, String creds, String branch, String rootPath, String childP
     
     gitCheckoutPrivate.call(url, creds, branch)
 
-    if (action == 'apply') {
-        utils.init(rootPath, childPath)
-        utils.plan(rootPath, childPath)
-        approval.call(applyMsg)
-        utils.apply(rootPath, childPath)
-    } else if (action == 'destroy') {
-        approval.call(destroyMsg)
-        utils.destroy(rootPath, childPath)
-    } else {
-        error("Invalid action specified: ${action}")
-    }
+    // if (action == 'apply') {
+    //     utils.init(rootPath, childPath)
+    //     utils.plan(rootPath, childPath)
+    //     approval.call(applyMsg)
+    //     utils.apply(rootPath, childPath)
+    // } else if (action == 'destroy') {
+    //     approval.call(destroyMsg)
+    //     utils.destroy(rootPath, childPath)
+    // } else {
+    //     error("Invalid action specified: ${action}")
+    // }
 
 }
