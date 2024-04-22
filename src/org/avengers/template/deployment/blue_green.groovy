@@ -3,7 +3,7 @@ package org.avengers.template.deployment
 import org.avengers.common.*
 import org.avengers.blue_green.*
 
-def call(String url, String creds, String branch, String rootPath, String childPath, String action) {
+def call(String url, String creds, String branch, String rootPath, String greenPath, String action, String bluePath) {
     def utils = new terragruntUtils()
     gitCheckoutPrivate = new GitCheckoutPrivate()
     def approval = new approval()
@@ -15,18 +15,16 @@ def call(String url, String creds, String branch, String rootPath, String childP
     gitCheckoutPrivate.call(url, creds, branch)
 
     if (action == 'apply') {
-        utils.init(rootPath, childPath)
-        utils.plan(rootPath, childPath, extraVars)
+        utils.init(rootPath, greenPath)
+        utils.plan(rootPath, greenPath)
         approval.call(createGreenTGApproval)
-        utils.createGreenTG(rootPath, childPath)
-        utils.healthCheck(rootPath, childPath)
+        utils.createGreenTG(rootPath, greenPath)
+        utils.healthCheck(rootPath, greenPath)
         approval.call(deployGreenApproval)
-        utils.deployGreen(rootPath, childPath)
+        utils.deployGreen(rootPath, greenPath)
     } else if (action == 'destroy') {
         approval.call(destroyMsg)
-        utils.destroy(rootPath, childPath)
-    } else {
-        error("Invalid action specified: ${action}")
+        utils.destroy(rootPath, greenPath)
     }
 
 }
