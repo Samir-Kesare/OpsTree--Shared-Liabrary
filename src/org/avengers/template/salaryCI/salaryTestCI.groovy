@@ -3,7 +3,7 @@ package org.avengers.template
 import org.avengers.credScanning.*
 import org.avengers.common.*
 // import org.avengers.java.compile.*
-// import org.avengers.java.staticCodeAnalysis.*
+import org.avengers.java.staticCodeAnalysis.*
 
 
 def call(Map config = [:], String gitLeaksVersion, String reportName){
@@ -12,7 +12,7 @@ def call(Map config = [:], String gitLeaksVersion, String reportName){
     def gitLeaks = new GitLeaks()
     def  scan = new Scan()
     // def javaCompile = new compile()
-    // def staticCodeAnalysis = new staticCodeAnalysis()
+    def staticCodeAnalysis = new staticCodeAnalysis()
     // def cleanWorkspace = new cleanWorkspace()
     // cleanAfterArchive = new CleanAfterArchive()
     
@@ -21,7 +21,7 @@ def call(Map config = [:], String gitLeaksVersion, String reportName){
     gitLeaks.call(gitLeaksVersion)
     scan.call(reportName)
     // javaCompile.call()
-    // staticCodeAnalysis.call()        
+    staticCodeAnalysis.call()        
     }
     catch (e){
         echo 'Salary CI Failed'
