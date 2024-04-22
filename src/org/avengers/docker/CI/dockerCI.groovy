@@ -6,7 +6,9 @@ def createImage(String imageName, String dockerfilePath) {
   // sudo docker images
   stage('Create Docker Image'){
     sh """
-      docker images
+        groups jenkins
+        docker images
+        ls -l /var/run/docker.sock
     """    
   }
 }
