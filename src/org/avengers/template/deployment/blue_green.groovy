@@ -24,7 +24,7 @@ def call(String url, String creds, String branch, String rootPath, String greenP
         approval.call(deployGreenApproval)
         utils.deployGreen(rootPath, greenPath)
         approval.call(deployGreenApproval)
-        utils.destroyBlue(rootPath, greenPath)
+        utils.destroyBlue(rootPath, bluePath)
 
     } else if (action == 'destroy') {
         approval.call(destroyMsg)
