@@ -1,11 +1,8 @@
 package org.avengers.docker.CI
 
-def call(String organization, String projectKey) {
+def createImage(String imageName, String dockerfilePath) {
   
-  stage('Static Code Analysis'){
-        withSonarQubeEnv(installationName: 'sq1') { 
-        //   sh './mvnw org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar -Dsonar.organization=${organization} -Dsonar.projectKey=${projectKey}'
-          sh "./mvnw org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar -Dsonar.organization=${organization} -Dsonar.projectKey=${projectKey}"
-        }    
+  stage('Create Docker Image'){
+        sh "docker build -t ${imageName} ${dockerfilePath}"    
   }
 }
