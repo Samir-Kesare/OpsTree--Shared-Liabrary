@@ -2,7 +2,7 @@ package org.avengers.blue_green
 
 def init(String rootPath, String childPath) {
     stage('Terragrunt Init') {
-        sh "cd ${rootPath}/${childPath} && terragrunt init"
+        sh "cd ${rootPath}/${childPath} && terragrunt run-all init"
     }
 }
 
