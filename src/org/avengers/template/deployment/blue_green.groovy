@@ -7,7 +7,7 @@ def call(String url, String creds, String branch, String rootPath, String childP
     def utils = new terragruntUtils()
     gitCheckoutPrivate = new GitCheckoutPrivate()
     def approval = new approval()
-    // def applyMsg = 'Do you want to apply the changes ?'
+    def applyMsg = 'Do you want to apply the changes ?'
     def destroyMsg = 'Do you want to destroy the changes ?'
 
     
@@ -16,8 +16,8 @@ def call(String url, String creds, String branch, String rootPath, String childP
     if (action == 'apply') {
         utils.init(rootPath, childPath)
         utils.plan(rootPath, childPath, extraVars)
-        // approval.call(applyMsg)
-        // utils.apply(rootPath, childPath, extraVars)
+        approval.call(applyMsg)
+        utils.apply(rootPath, childPath, extraVars)
     } else if (action == 'destroy') {
         approval.call(destroyMsg)
         utils.destroy(rootPath, childPath)
