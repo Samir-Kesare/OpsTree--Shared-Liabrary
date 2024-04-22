@@ -12,9 +12,9 @@ def plan(String rootPath, String childPath, String extraVars) {
     }
 }
 
-def apply(String rootPath, String childPath, String extraVars) {
-    stage('Terragrunt Apply') {
-        sh "cd ${rootPath}/${childPath} && terragrunt apply -auto-approve ${extraVars}"
+def createGreenTG(String rootPath, String childPath, String extraVars) {
+    stage('Create Green TG') {
+       sh 'cd ${rootPath}/${childPath} && terragrunt apply -auto-approve -var="traffic_distribution=blue"'
     }
 }
 
@@ -33,3 +33,9 @@ def healthCheck(String rootPath, String childPath) {
                     }
     
 }
+def deployGreen(String rootPath, String childPath) {
+    stage('Deploy Green') {
+        sh 'cd ${rootPath}/${childPath} && terragrunt apply -auto-approve -var="traffic_distribution=green"'
+    }
+}
+
