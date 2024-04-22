@@ -4,7 +4,7 @@ import org.avengers.common.*
 import org.avengers.blue_green.terragruntUtils
 
 def call(String url, String creds, String branch, String rootPath, String childPath, String action) {
-    def utils = new TerragruntUtils()
+    def utils = new terragruntUtils()
     gitCheckoutPrivate = new GitCheckoutPrivate()
     def approval = new approval()
     def applyMsg = 'Do you want to apply the changes ?'
