@@ -6,7 +6,7 @@ def init(String rootPath, String childPath) {
     }
 }
 
-def plan(String rootPath, String childPath, String extraVars) {
+def plan(String rootPath, String childPath) {
     stage('Terragrunt Plan') {
         sh 'cd ${rootPath}/${childPath} && terragrunt plan -var="traffic_distribution=blue"'
 
