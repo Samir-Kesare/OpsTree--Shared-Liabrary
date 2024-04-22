@@ -5,7 +5,7 @@ def createImage(String imageName, String dockerfilePath) {
   //     sudo systemctl restart docker
  //     groups jenkins
 //     ls -l /var/run/docker.sock
-    stage('Create Docker Image'){
+    stage('Create Image'){
     sh """
         sudo docker build -t ${imageName} ${dockerfilePath}  
         sudo docker images
