@@ -4,15 +4,17 @@ import org.avengers.credScanning.*
 import org.avengers.common.*
 import org.avengers.java.compile.*
 import org.avengers.java.staticCodeAnalysis.*
+import org.avengers.docker.CI.*
 
 
-def call(Map config = [:], String gitLeaksVersion, String reportName, String organization, String projectKey){
+def call(Map config = [:], String gitLeaksVersion, String reportName, String organization, String projectKey, String imageName, String dockerfilePath){
     
     def gitCheckout = new gitCheckout()
     def gitLeaks = new GitLeaks()
     def  scan = new Scan()
     def javaCompile = new compile()
     def sonarCloud = new sonarCloud()
+    def dockerCI = new dockerCI()
     // def cleanWorkspace = new cleanWorkspace()
     // cleanAfterArchive = new CleanAfterArchive()
     
@@ -21,7 +23,8 @@ def call(Map config = [:], String gitLeaksVersion, String reportName, String org
     gitLeaks.call(gitLeaksVersion)
     scan.call(reportName)
     javaCompile.call()
-    sonarCloud.call(organization, projectKey)        
+    sonarCloud.call(organization, projectKey)
+    dockerCI.createImage(imageName, dockerfilePath)
     }
     catch (e){
         echo 'Salary CI Failed'
