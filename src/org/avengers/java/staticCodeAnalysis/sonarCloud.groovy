@@ -1,4 +1,7 @@
 package org.avengers.java.staticCodeAnalysis
+tools {
+  maven 'mvn'
+}
 
 def call(String organization, String projectKey) {
   stage('Static Code Analysis'){
