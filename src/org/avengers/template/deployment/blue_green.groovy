@@ -4,7 +4,7 @@ import org.avengers.common.*
 import org.avengers.blue_green.*
 
 def call(String url, String creds, String branch, String rootPath, String childPath, String action, String extraVars) {
-    // def utils = new terragruntUtils()
+    def utils = new terragruntUtils()
     gitCheckoutPrivate = new GitCheckoutPrivate()
     // def approval = new approval()
     // def applyMsg = 'Do you want to apply the changes ?'
@@ -15,9 +15,9 @@ def call(String url, String creds, String branch, String rootPath, String childP
 
     if (action == 'apply') {
         utils.init(rootPath, childPath)
-        utils.plan(rootPath, childPath, extraVars)
-        approval.call(applyMsg)
-        utils.apply(rootPath, childPath, extraVars)
+        // utils.plan(rootPath, childPath, extraVars)
+        // approval.call(applyMsg)
+        // utils.apply(rootPath, childPath, extraVars)
     } else if (action == 'destroy') {
         approval.call(destroyMsg)
         utils.destroy(rootPath, childPath)
