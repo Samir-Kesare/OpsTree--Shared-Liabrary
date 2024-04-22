@@ -2,7 +2,7 @@ package org.avengers.template
 
 import org.avengers.credScanning.*
 import org.avengers.common.*
-// import org.avengers.java.compile.*
+import org.avengers.java.compile.*
 import org.avengers.java.staticCodeAnalysis.*
 
 
@@ -11,7 +11,7 @@ def call(Map config = [:], String gitLeaksVersion, String reportName, String org
     def gitCheckout = new gitCheckout()
     def gitLeaks = new GitLeaks()
     def  scan = new Scan()
-    // def javaCompile = new compile()
+    def javaCompile = new compile()
     def sonarCloud = new sonarCloud()
     // def cleanWorkspace = new cleanWorkspace()
     // cleanAfterArchive = new CleanAfterArchive()
@@ -20,7 +20,7 @@ def call(Map config = [:], String gitLeaksVersion, String reportName, String org
     gitCheckout.call(branch: config.branch, url: config.url  )
     gitLeaks.call(gitLeaksVersion)
     scan.call(reportName)
-    // javaCompile.call()
+    javaCompile.call()
     sonarCloud.call(organization, projectKey)        
     }
     catch (e){
