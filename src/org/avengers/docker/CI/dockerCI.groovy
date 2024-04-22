@@ -29,6 +29,9 @@ def trivyCheck() {
         print header > "mi.csv";
         print value >> "mi.csv";
     }' trivy-results.json
-    '''   
+    '''  
+    sh'''
+    cat mi.csv
+    ''' 
   }
 }
