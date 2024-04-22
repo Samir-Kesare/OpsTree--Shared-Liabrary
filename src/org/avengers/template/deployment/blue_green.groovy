@@ -15,7 +15,7 @@ def call(String url, String creds, String branch, String rootPath, String childP
 
     if (action == 'apply') {
         utils.init(rootPath, childPath)
-        // utils.plan(rootPath, childPath, extraVars)
+        utils.plan(rootPath, childPath, extraVars)
         // approval.call(applyMsg)
         // utils.apply(rootPath, childPath, extraVars)
     } else if (action == 'destroy') {
