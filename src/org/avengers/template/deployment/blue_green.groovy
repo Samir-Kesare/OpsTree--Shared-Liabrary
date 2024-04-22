@@ -10,7 +10,7 @@ def call(String url, String creds, String branch, String rootPath, String greenP
     def createGreenTGApproval = 'Do you want to create Green TG ?'
     def deployGreenApproval = 'Do you want to deploy Green TG ?'
     def destroyMsg = 'Do you want to destroy the changes ?'
-    def destroyBlueMsg = 'Do you want to destroy the Blue ?'
+    def destroyBlueMsg = 'Do you want to destroy Blue VMs ?'
 
     
     gitCheckoutPrivate.call(url, creds, branch)
