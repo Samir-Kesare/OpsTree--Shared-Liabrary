@@ -33,13 +33,9 @@ def healthCheck(String rootPath, String childPath) {
                     }
         stage('TG Health Check'){
                     sh """
-                        echo ${env.GREEN_TG_ARN}
-                        echo "------------------------------------------------------------------------------"
-                        
+                        echo ${env.GREEN_TG_ARN}                        
                         aws elbv2 describe-target-health --target-group-arn ${env.GREEN_TG_ARN} | grep State
 
-                        echo "------------------------------------------------------------------------------"
-                        
                     """
         }
     
