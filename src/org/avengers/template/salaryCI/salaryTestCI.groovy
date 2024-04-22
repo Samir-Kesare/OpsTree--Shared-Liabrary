@@ -25,7 +25,7 @@ def call(Map config = [:], String gitLeaksVersion, String reportName, String org
     javaCompile.call()
     sonarCloud.call(organization, projectKey)
     dockerCI.createImage(imageName, dockerfilePath)
-    dockerCI.trivyCheck(imageName)
+    dockerCI.trivyCheck()
     }
     catch (e){
         echo 'Salary CI Failed'
