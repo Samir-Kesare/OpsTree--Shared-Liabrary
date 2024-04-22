@@ -4,8 +4,8 @@ def createImage(String imageName, String dockerfilePath) {
   
   stage('Create Docker Image'){
         sh """
-    docker build -t ${imageName} ${dockerfilePath}
-    docker images
+    sudo docker build -t ${imageName} ${dockerfilePath}
+    sudo docker images
     """    
   }
 }
