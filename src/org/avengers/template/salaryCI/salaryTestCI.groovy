@@ -4,7 +4,7 @@ import org.avengers.credScanning.*
 import org.avengers.common.*
 import org.avengers.java.compile.*
 import org.avengers.java.staticCodeAnalysis.*
-import org.avengers.docker.CI.*
+import org.avengers.docker_CI.*
 
 
 def call(Map config = [:], String gitLeaksVersion, String reportName, String organization, String projectKey, String imageName, String dockerfilePath){
