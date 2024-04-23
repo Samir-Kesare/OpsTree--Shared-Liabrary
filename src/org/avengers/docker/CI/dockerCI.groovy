@@ -43,7 +43,7 @@ def trivyCheck() {
     export base64EncodedResponse=`base64 mi.csv`
     envsubst < mi.template > trivy.mi
     cat trivy.mi
-    curl -d "@$${trivy.mi}" -X POST  -H "Content-Type: application/json" http://34.131.67.101:9001/api/v1/maturity_dashboard/maturity_metrices/
+    curl -d "@trivy.mi" -X POST  -H "Content-Type: application/json" http://34.131.67.101:9001/api/v1/maturity_dashboard/maturity_metrices/
     '''
   }
 }
